@@ -1,4 +1,4 @@
-# maplestoryshop
+# MapleStory Shop
 
 > A Vue.js project
 

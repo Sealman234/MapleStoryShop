@@ -1,0 +1,8 @@
+// 載入 Bootstrap 套用變數的方法，有這些方法才能正確啟用下面自訂的變數
+@import "~bootstrap/scss/functions";
+// 自定義的變數
+@import "./helpers/variables";
+// 載入 node_modules 裡的 bootstrap/scss/bootstrap.scss 檔案
+@import "~bootstrap/scss/bootstrap";
+
+// @import "./dashboard";
