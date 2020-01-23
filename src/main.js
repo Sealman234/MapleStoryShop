@@ -2,7 +2,6 @@ import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Loading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
 import 'bootstrap';
 import VeeValidate from 'vee-validate'; // VeeValidate
 import zhTW from 'vee-validate/dist/locale/zh_TW'; // 中文
@@ -13,6 +12,11 @@ import router from './router';
 import './bus';
 import currencyFilter from './filters/currency';
 import dateFilter from './filters/date';
+
+// Swiper (全域)
+import VueAwesomeSwiper from 'vue-awesome-swiper';
+import 'swiper/dist/css/swiper.css';
+Vue.use(VueAwesomeSwiper);
 
 Vue.use(VueAxios, axios);
 // vue-i18n

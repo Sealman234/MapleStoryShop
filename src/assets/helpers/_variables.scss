@@ -76,7 +76,9 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-800 !default;
-$maple:       #c1170c !default; // Maple Red
+$maple:       #c1170c !default; // Maple red
+$soft:        #76B0E2 !default; // Soft blue
+$moderate:    #274878 !default; // Dark moderate blue
 
 $theme-colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -90,7 +92,9 @@ $theme-colors: map-merge(
     "danger":     $danger,
     "light":      $light,
     "dark":       $dark,
-    "maple":      $maple, // Maple Red
+    "maple":      $maple, // Maple red
+    "soft":       $soft, // Soft blue
+    "moderate":   $moderate, // Dark moderate blue
   ),
   $theme-colors
 );

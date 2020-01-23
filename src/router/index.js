@@ -62,6 +62,7 @@ export default new VueRouter({
     {
       name: 'Base',
       path: '/',
+      redirect: '/index',
       component: Base,
       children: [
         {
