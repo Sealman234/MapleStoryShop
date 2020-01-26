@@ -27,28 +27,28 @@
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 <span></span>
-                <router-link to="/index" class="nav-link p-3">
+                <router-link to="/index" class="nav-link p-3" data-toggle="collapse" data-target=".navbar-collapse.show">
                   <i class="fas fa-home"></i>
                   首頁
                 </router-link>
               </li>
               <li class="nav-item">
                 <span></span>
-                <router-link to="/category" class="nav-link p-3">
+                <router-link to="/category" class="nav-link p-3" data-toggle="collapse" data-target=".navbar-collapse.show">
                   <i class="fas fa-box-open"></i>
                   所有商品
                 </router-link>
               </li>
               <li class="nav-item">
                 <span></span>
-                <router-link to="/aboutMS" class="nav-link p-3">
+                <router-link to="/aboutMS" class="nav-link p-3" data-toggle="collapse" data-target=".navbar-collapse.show">
                   <i class="fas fa-book"></i>
                   關於楓之谷
                 </router-link>
               </li>
               <li class="nav-item">
                 <span></span>
-                <router-link to="/customerOrder" class="nav-link p-3">
+                <router-link to="/customerOrder" class="nav-link p-3" data-toggle="collapse" data-target=".navbar-collapse.show">
                   <i class="fas fa-shopping-cart"></i>
                   購物車
                 </router-link>
@@ -62,7 +62,7 @@
               </li>
               <li class="nav-item">
                 <span></span>
-                <router-link to="/login" class="nav-link p-3">
+                <router-link to="/login" class="nav-link p-3" data-toggle="collapse" data-target=".navbar-collapse.show">
                   <i class="fas fa-user-cog"></i>
                   登入
                 </router-link>
@@ -118,7 +118,7 @@ import Tiles from "./Tiles";
 export default {
   components: {
     Tiles
-  }
+  },
 };
 </script>
 
