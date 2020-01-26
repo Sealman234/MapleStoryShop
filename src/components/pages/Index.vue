@@ -32,25 +32,40 @@
     <section class="container-fluid container-sm">
       <h3>商品分類</h3>
       <div class="d-flex justify-content-between">
-        <a href="#" class="btn category-btn mx-2 d-flex justify-content-center align-items-center p-3">
+        <a
+          href="#"
+          class="btn category-btn mx-2 d-flex justify-content-center align-items-center p-3"
+        >
           <img src="../../assets/images/gif/pig.gif" height="50px" alt />
           <p class="m-0 ml-2">所有商品</p>
         </a>
-        <a href="#" class="btn category-btn mx-2 d-flex justify-content-center align-items-center p-3">
+        <a
+          href="#"
+          class="btn category-btn mx-2 d-flex justify-content-center align-items-center p-3"
+        >
           <img src="../../assets/images/Korean Fan.png" height="50px" alt />
           <p class="m-0 ml-2">熱銷商品</p>
         </a>
-        <a href="#" class="btn category-btn mx-2 d-flex justify-content-center align-items-center p-3">
+        <a
+          href="#"
+          class="btn category-btn mx-2 d-flex justify-content-center align-items-center p-3"
+        >
           <img src="../../assets/images/MapleScorpio.png" height="50px" alt />
           <p class="m-0 ml-2">楓葉武器</p>
         </a>
-        <a href="#" class="btn category-btn mx-2 d-flex justify-content-center align-items-center p-3">
+        <a
+          href="#"
+          class="btn category-btn mx-2 d-flex justify-content-center align-items-center p-3"
+        >
           <img src="../../assets/images/MapleShield.png" height="50px" alt />
           <p class="m-0 ml-2">楓葉防具</p>
         </a>
-        <a href="#" class="btn category-btn mx-2 d-flex justify-content-center align-items-center p-3">
+        <a
+          href="#"
+          class="btn category-btn mx-2 d-flex justify-content-center align-items-center p-3"
+        >
           <img src="../../assets/images/Last Unwelcome Guest Dagger (LUK).png" height="50px" alt />
-          <p class="m-0 ml-2">不速之客系列商品</p>
+          <p class="m-0 ml-2">不速之客</p>
         </a>
       </div>
     </section>
@@ -158,7 +173,7 @@ export default {
   bottom: 0px;
 }
 /* Category Button */
-.category-btn {
+/* .category-btn {
   border-radius: 5px;
   border: 0.5px solid #ccc;
   margin: 5px;
@@ -166,5 +181,5 @@ export default {
 }
 .category-btn:hover {
   border: 0.5px solid #c1170c;
-}
+} */
 </style>

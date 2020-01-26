@@ -2,6 +2,7 @@ import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css'
 import 'bootstrap';
 import VeeValidate from 'vee-validate'; // VeeValidate
 import zhTW from 'vee-validate/dist/locale/zh_TW'; // 中文

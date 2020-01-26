@@ -6,7 +6,7 @@
         class="navbar navbar-expand-lg navbar-light bg-white"
         style="border-bottom: 4px solid #D3D3D3; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);"
       >
-        <div class="container-fluid container-lg">
+        <div class="container-lg">
           <div class="ms-logo">
             <h1 class="m-0">
               <router-link to="/index" class="navbar-brand mr-auto" href="#">MapleStory</router-link>
