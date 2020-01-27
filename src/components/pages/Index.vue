@@ -1,8 +1,15 @@
 <!-- The ref attr used to find the swiper instance -->
 <template>
   <div>
-    <!-- 商品展示 -->
-    <section class="topSwiper container-lg py-5">
+    <!-- Banner -->
+    <div class="banner"></div>
+    <!-- 最新商品 -->
+    <section class="container">
+      <h3>最新商品</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit ipsum, hic libero nam debitis neque odit quaerat nulla placeat veritatis? Explicabo eum sunt natus recusandae, rerum earum nihil repellendus debitis nulla expedita necessitatibus odit non autem laboriosam magnam dolorum voluptatem ea et nostrum, illo laudantium eaque. Sed consequuntur natus excepturi perferendis amet quos sit asperiores et commodi aliquid autem laboriosam, similique quam earum iusto nesciunt architecto suscipit repellendus dolore culpa reiciendis. Ex qui blanditiis maxime, unde sit aperiam ab molestiae saepe perferendis fugit temporibus placeat eaque adipisci alias ea. Impedit ipsam at voluptatem amet porro illo sit temporibus ipsa facere.</p>
+    </section>
+    <!-- 職業展示 -->
+    <section class="jobSwiper container-lg py-5">
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <swiper :options="swiperOption">
@@ -28,24 +35,17 @@
         <div class="swiper-button-next"></div>
       </div>
     </section>
-    <!-- 最新上架 -->
-    <section class="container">
-      <h3>最新上架</h3>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit ipsum, hic libero nam debitis neque odit quaerat nulla placeat veritatis? Explicabo eum sunt natus recusandae, rerum earum nihil repellendus debitis nulla expedita necessitatibus odit non autem laboriosam magnam dolorum voluptatem ea et nostrum, illo laudantium eaque. Sed consequuntur natus excepturi perferendis amet quos sit asperiores et commodi aliquid autem laboriosam, similique quam earum iusto nesciunt architecto suscipit repellendus dolore culpa reiciendis. Ex qui blanditiis maxime, unde sit aperiam ab molestiae saepe perferendis fugit temporibus placeat eaque adipisci alias ea. Impedit ipsam at voluptatem amet porro illo sit temporibus ipsa facere.</p>
-    </section>
   </div>
 </template>
 
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
-import Tiles from "../Tiles"; // 地板
 
 export default {
   name: "Swiper",
   components: {
     swiper,
-    swiperSlide,
-    Tiles // 地板
+    swiperSlide
   },
   data() {
     return {
@@ -88,57 +88,58 @@ export default {
 };
 </script>
 
-<style scope>
-/* Swiper */
-@media (max-width: 991px) {
-  .topSwiper.container-lg {
-    padding-right: 0px;
-    padding-left: 0px;
-    max-width: 100%;
-  }
-}
-.swiper-container {
-  width: 100%;
-  height: 400px;
-}
-.swiper-slide {
-  background: #fff;
-  width: 50%;
-}
-.slide {
-  height: 400px;
-  background-size: contain;
+<style scope lang="scss">
+.banner {
+  background-image: url(../../assets/images/pocket.png);
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center bottom;
+  height: 720px;
 }
-.swiper-slide-prev,
-.swiper-slide-next {
-  opacity: 0.3;
-}
-@media screen and (max-width: 576px) {
-  .swiper-container,
-  .slide {
-    height: 300px;
+// Swiper
+.jobSwiper {
+  section.container-lg {
+    @media (max-width: 991px) {
+      padding-right: 0px;
+      padding-left: 0px;
+      max-width: 100%;
+    }
   }
-  .swiper-slide {
-    width: 80%;
+  .swiper-container {
+    width: 100%;
+    height: 400px;
+    @media (max-width: 576px) {
+      height: 300px;
+    }
+    .swiper-wrapper {
+      .swiper-slide {
+        background: #fff;
+        width: 50%;
+        @media (max-width: 576px) {
+          width: 80%;
+        }
+      }
+      .slide {
+        height: 400px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        @media (max-width: 576px) {
+          height: 300px;
+        }
+      }
+      .swiper-slide-prev,
+      .swiper-slide-next {
+        opacity: 0.3;
+      }
+    }
+    .swiper-container-horizontal > .swiper-pagination-bullets {
+      bottom: 0px;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+      outline: none;
+    }
   }
 }
-.swiper-button-prev,
-.swiper-button-next {
-  outline: none;
-}
-.swiper-container-horizontal > .swiper-pagination-bullets {
-  bottom: 0px;
-}
-/* Category Button */
-/* .category-btn {
-  border-radius: 5px;
-  border: 0.5px solid #ccc;
-  margin: 5px;
-  transition: all 0.3s;
-}
-.category-btn:hover {
-  border: 0.5px solid #c1170c;
-} */
 </style>

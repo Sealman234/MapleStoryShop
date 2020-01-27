@@ -6,108 +6,127 @@
         <div class="loading-image"></div>
       </template>
     </loading>
-    <div class="category container py-5">
+    <!-- Banner -->
+    <div class="banner"></div>
+    <!-- Main content -->
+    <div class="category container pt-3 pb-5">
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-white">
+          <li class="breadcrumb-item">
+            <router-link to="/index" class="text-maple">首頁</router-link>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            <span v-if="tempCategory==''">所有商品</span>
+            <span v-else>{{ tempCategory }}</span>
+          </li>
+        </ol>
+      </nav>
       <div class="row">
         <!-- 商品類別 -->
-        <section class="col-12 col-lg-3 d-flex d-lg-block flex-wrap justify-content-between">
-          <a
-            href="#"
-            class="btn category-btn d-md-flex justify-content-center align-items-center p-3"
-            @click.prevent="tempCategory = ''"
-            :class="{'active': tempCategory == ''}"
-          >
-            <div class="row no-gutters">
-              <div class="col-md-4 align-self-center text-center text-md-right">
-                <img src="../../assets/images/gif/pig.gif" height="50px" alt />
+        <section class="col-12 col-lg-3">
+          <div class="d-flex d-lg-block flex-wrap justify-content-between sticky-list">
+            <a
+              href="#"
+              class="btn category-btn d-md-flex justify-content-center align-items-center p-3"
+              @click.prevent="tempCategory = ''"
+              :class="{'active': tempCategory == ''}"
+            >
+              <div class="row no-gutters">
+                <div class="col-md-4 align-self-center text-center text-md-right">
+                  <img src="../../assets/images/gif/pig.gif" height="50px" alt />
+                </div>
+                <div class="col-md-8 align-self-center text-center text-md-left">
+                  <p>所有商品</p>
+                </div>
               </div>
-              <div class="col-md-8 align-self-center text-center text-md-left">
-                <p>所有商品</p>
+            </a>
+            <a
+              href="#"
+              class="btn category-btn d-md-flex justify-content-center align-items-center p-3"
+              @click.prevent="tempCategory = '熱銷商品'"
+              :class="{'active': tempCategory == '熱銷商品'}"
+            >
+              <div class="row no-gutters">
+                <div class="col-md-4 align-self-center text-center text-md-right">
+                  <img src="../../assets/images/mesobag.png" height="50px" alt />
+                </div>
+                <div class="col-md-8 align-self-center text-center text-md-left">
+                  <p>熱銷商品</p>
+                </div>
               </div>
-            </div>
-          </a>
-          <a
-            href="#"
-            class="btn category-btn d-md-flex justify-content-center align-items-center p-3"
-            @click.prevent="tempCategory = '熱銷商品'"
-            :class="{'active': tempCategory == '熱銷商品'}"
-          >
-            <div class="row no-gutters">
-              <div class="col-md-4 align-self-center text-center text-md-right">
-                <img src="../../assets/images/mesobag.png" height="50px" alt />
+            </a>
+            <a
+              href="#"
+              class="btn category-btn d-md-flex justify-content-center align-items-center p-3"
+              @click.prevent="tempCategory = '最新商品'"
+              :class="{'active': tempCategory == '最新商品'}"
+            >
+              <div class="row no-gutters">
+                <div class="col-md-4 align-self-center text-center text-md-right">
+                  <img src="../../assets/images/Korean Fan.png" height="50px" alt />
+                </div>
+                <div class="col-md-8 align-self-center text-center text-md-left">
+                  <p>最新商品</p>
+                </div>
               </div>
-              <div class="col-md-8 align-self-center text-center text-md-left">
-                <p>熱銷商品</p>
+            </a>
+            <a
+              href="#"
+              class="btn category-btn d-md-flex justify-content-center align-items-center p-3"
+              @click.prevent="tempCategory = '楓葉武器'"
+              :class="{'active': tempCategory == '楓葉武器'}"
+            >
+              <div class="row no-gutters">
+                <div class="col-md-4 align-self-center text-center text-md-right">
+                  <img src="../../assets/images/MapleScorpio.png" height="50px" alt />
+                </div>
+                <div class="col-md-8 align-self-center text-center text-md-left">
+                  <p>楓葉武器</p>
+                </div>
               </div>
-            </div>
-          </a>
-          <a
-            href="#"
-            class="btn category-btn d-md-flex justify-content-center align-items-center p-3"
-            @click.prevent="tempCategory = '最新商品'"
-            :class="{'active': tempCategory == '最新商品'}"
-          >
-            <div class="row no-gutters">
-              <div class="col-md-4 align-self-center text-center text-md-right">
-                <img src="../../assets/images/Korean Fan.png" height="50px" alt />
+            </a>
+            <a
+              href="#"
+              class="btn category-btn d-md-flex justify-content-center align-items-center p-3"
+              @click.prevent="tempCategory = '楓葉防具'"
+              :class="{'active': tempCategory == '楓葉防具'}"
+            >
+              <div class="row no-gutters">
+                <div class="col-md-4 align-self-center text-center text-md-right">
+                  <img src="../../assets/images/MapleShield.png" height="50px" alt />
+                </div>
+                <div class="col-md-8 align-self-center text-center text-md-left">
+                  <p>楓葉防具</p>
+                </div>
               </div>
-              <div class="col-md-8 align-self-center text-center text-md-left">
-                <p>最新商品</p>
+            </a>
+            <a
+              href="#"
+              class="btn category-btn d-md-flex justify-content-center align-items-center p-3"
+              @click.prevent="tempCategory = '不速之客'"
+              :class="{'active': tempCategory == '不速之客'}"
+            >
+              <div class="row no-gutters">
+                <div class="col-md-4 align-self-center text-center text-md-right">
+                  <img
+                    src="../../assets/images/Last Unwelcome Guest Dagger (LUK).png"
+                    height="50px"
+                    alt
+                  />
+                </div>
+                <div class="col-md-8 align-self-center text-center text-md-left">
+                  <p>不速之客</p>
+                </div>
               </div>
-            </div>
-          </a>
-          <a
-            href="#"
-            class="btn category-btn d-md-flex justify-content-center align-items-center p-3"
-            @click.prevent="tempCategory = '楓葉武器'"
-            :class="{'active': tempCategory == '楓葉武器'}"
-          >
-            <div class="row no-gutters">
-              <div class="col-md-4 align-self-center text-center text-md-right">
-                <img src="../../assets/images/MapleScorpio.png" height="50px" alt />
-              </div>
-              <div class="col-md-8 align-self-center text-center text-md-left">
-                <p>楓葉武器</p>
-              </div>
-            </div>
-          </a>
-          <a
-            href="#"
-            class="btn category-btn d-md-flex justify-content-center align-items-center p-3"
-            @click.prevent="tempCategory = '楓葉防具'"
-            :class="{'active': tempCategory == '楓葉防具'}"
-          >
-            <div class="row no-gutters">
-              <div class="col-md-4 align-self-center text-center text-md-right">
-                <img src="../../assets/images/MapleShield.png" height="50px" alt />
-              </div>
-              <div class="col-md-8 align-self-center text-center text-md-left">
-                <p>楓葉防具</p>
-              </div>
-            </div>
-          </a>
-          <a
-            href="#"
-            class="btn category-btn d-md-flex justify-content-center align-items-center p-3"
-            @click.prevent="tempCategory = '不速之客'"
-            :class="{'active': tempCategory == '不速之客'}"
-          >
-            <div class="row no-gutters">
-              <div class="col-md-4 align-self-center text-center text-md-right">
-                <img
-                  src="../../assets/images/Last Unwelcome Guest Dagger (LUK).png"
-                  height="50px"
-                  alt
-                />
-              </div>
-              <div class="col-md-8 align-self-center text-center text-md-left">
-                <p>不速之客</p>
-              </div>
-            </div>
-          </a>
+            </a>
+          </div>
         </section>
         <!-- 商品列表 -->
         <section class="col-12 col-lg-9">
-          <div class="row mt-3 mt-lg-0">
+          <h3 v-if="tempCategory">{{ tempCategory }}</h3>
+          <h3 v-else>所有商品</h3>
+          <div class="row mt-3">
             <article class="col-md-6 col-lg-4 mb-4" v-for="item in activeProducts" :key="item.id">
               <div class="card border">
                 <div class="border-bottom">
@@ -251,7 +270,7 @@ export default {
     getProducts() {
       const vm = this;
       // API 要用 Shopping 那段，不是用 admin 的
-      const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products`;
+      const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`; // 取得商品列表_all
       vm.isLoading = true;
       this.$http.get(url).then(response => {
         vm.products = response.data.products;
@@ -284,7 +303,7 @@ export default {
         // vm.getCart(); // 加入後刷新購物車
         $("#productModal").modal("hide");
       });
-    },
+    }
   },
   computed: {
     activeProducts() {
@@ -309,14 +328,26 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.loading-image{
-  background-image: url(../../assets/images/gif/gugu2.gif);
-  background-size: contain;
-  width: 92.6778242678px;
+.loading-image {
+  background-image: url(../../assets/images/gif/slime.gif);
+  background-size: cover;
+  width: 76.5957446809px;
   height: 100px;
 }
-
+.banner {
+  background-image: url(../../assets/images/mobs.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  height: 640px;
+}
 .category {
+  .sticky-list {
+    @media (min-width: 992px) {
+      position: sticky !important;
+      top: 93px;
+    }
+  }
   .category-btn {
     border-radius: 5px;
     border: 0.5px solid #ccc;

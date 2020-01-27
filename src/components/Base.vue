@@ -2,10 +2,7 @@
   <div>
     <!-- Header -->
     <header class="fixed-top">
-      <nav
-        class="navbar navbar-expand-lg navbar-light bg-white"
-        style="border-bottom: 4px solid #D3D3D3; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);"
-      >
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-lg">
           <div class="ms-logo">
             <h1 class="m-0">
@@ -27,28 +24,48 @@
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 <span></span>
-                <router-link to="/index" class="nav-link p-3" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <router-link
+                  to="/index"
+                  class="nav-link p-3"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse.show"
+                >
                   <i class="fas fa-home"></i>
                   首頁
                 </router-link>
               </li>
               <li class="nav-item">
                 <span></span>
-                <router-link to="/category" class="nav-link p-3" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <router-link
+                  to="/category"
+                  class="nav-link p-3"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse.show"
+                >
                   <i class="fas fa-box-open"></i>
                   所有商品
                 </router-link>
               </li>
               <li class="nav-item">
                 <span></span>
-                <router-link to="/aboutMS" class="nav-link p-3" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <router-link
+                  to="/aboutMS"
+                  class="nav-link p-3"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse.show"
+                >
                   <i class="fas fa-book"></i>
                   關於楓之谷
                 </router-link>
               </li>
               <li class="nav-item">
                 <span></span>
-                <router-link to="/customerOrder" class="nav-link p-3" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <router-link
+                  to="/customerOrder"
+                  class="nav-link p-3"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse.show"
+                >
                   <i class="fas fa-shopping-cart"></i>
                   購物車
                 </router-link>
@@ -62,7 +79,12 @@
               </li>
               <li class="nav-item">
                 <span></span>
-                <router-link to="/login" class="nav-link p-3" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <router-link
+                  to="/login"
+                  class="nav-link p-3"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse.show"
+                >
                   <i class="fas fa-user-cog"></i>
                   登入
                 </router-link>
@@ -73,7 +95,7 @@
       </nav>
     </header>
     <!-- 各頁面內容 -->
-    <main style="margin-top: 78px;">
+    <main>
       <router-view></router-view>
     </main>
     <!-- Footer -->
@@ -118,57 +140,60 @@ import Tiles from "./Tiles";
 export default {
   components: {
     Tiles
-  },
+  }
 };
 </script>
 
-<style scoped>
-/* header */
-.ms-logo .navbar-brand {
-  background-image: url(../assets/images/MapleStory.svg);
-  width: 150px;
-  height: 57.79px;
-  display: block;
-  text-indent: 101%;
-  overflow: hidden;
-  white-space: nowrap;
-}
-.navbar li {
-  float: left;
-  position: relative;
-}
-.navbar .nav-link {
-  display: block;
-  background: transparent;
-  /* color: #000; */
-  font-weight: bold;
-  text-decoration: none;
-  padding: 20px;
-  position: relative;
-}
-.navbar li:hover span {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -35%;
-  width: 70%;
-  height: 0px;
-  box-shadow: 0 0 20px 12px rgba(150, 180, 200, 0.6);
-  border-radius: 10px 6px;
-}
-@media screen and (max-width: 991px) {
-  .navbar li:hover span {
-    left: 2%;
-    top: 50%;
-    margin-left: 0;
-    width: 95%;
+<style scoped lang="scss">
+// Header (選單)
+.navbar {
+  border-bottom: 4px solid #d3d3d3;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  .ms-logo .navbar-brand {
+    background-image: url(../assets/images/MapleStory.svg);
+    width: 150px;
+    height: 57.79px;
+    display: block;
+    text-indent: 101%;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  li.nav-item {
+    float: left;
+    position: relative;
+    &:hover span {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -35%;
+      width: 70%;
+      height: 0px;
+      box-shadow: 0 0 20px 12px rgba(150, 180, 200, 0.6);
+      border-radius: 10px 6px;
+      @media (max-width: 991px) {
+        left: 2%;
+        top: 50%;
+        margin-left: 0;
+        width: 95%;
+      }
+    }
+    .nav-link {
+      display: block;
+      background: transparent;
+      // color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 20px;
+      position: relative;
+      &.active,
+      &:hover {
+        color: #c1170c;
+      }
+    }
   }
 }
-.navbar .nav-link.active,
-.navbar .nav-link:hover {
-  color: #c1170c;
-}
-.bg-blue-dark {
-  background-color: #274878;
+// Main (主要內容)
+main {
+  margin-top: 78px;
 }
 </style>
