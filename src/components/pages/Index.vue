@@ -9,7 +9,7 @@
       <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit ipsum, hic libero nam debitis neque odit quaerat nulla placeat veritatis? Explicabo eum sunt natus recusandae, rerum earum nihil repellendus debitis nulla expedita necessitatibus odit non autem laboriosam magnam dolorum voluptatem ea et nostrum, illo laudantium eaque. Sed consequuntur natus excepturi perferendis amet quos sit asperiores et commodi aliquid autem laboriosam, similique quam earum iusto nesciunt architecto suscipit repellendus dolore culpa reiciendis. Ex qui blanditiis maxime, unde sit aperiam ab molestiae saepe perferendis fugit temporibus placeat eaque adipisci alias ea. Impedit ipsam at voluptatem amet porro illo sit temporibus ipsa facere.</p>
     </section>
     <!-- 職業展示 -->
-    <section class="jobSwiper container-lg py-5">
+    <section class="jobSwiper py-5">
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <swiper :options="swiperOption">
@@ -94,22 +94,18 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center bottom;
-  height: 720px;
+  height: 30vh;
+  @media (min-width: 992px) {
+    height: 50vh;
+  }
 }
 // Swiper
 .jobSwiper {
-  section.container-lg {
-    @media (max-width: 991px) {
-      padding-right: 0px;
-      padding-left: 0px;
-      max-width: 100%;
-    }
-  }
   .swiper-container {
     width: 100%;
-    height: 400px;
+    height: 50vh;
     @media (max-width: 576px) {
-      height: 300px;
+      height: 40vh;
     }
     .swiper-wrapper {
       .swiper-slide {
@@ -120,12 +116,12 @@ export default {
         }
       }
       .slide {
-        height: 400px;
+        height: 50vh;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center center;
         @media (max-width: 576px) {
-          height: 300px;
+          height: 40vh;
         }
       }
       .swiper-slide-prev,

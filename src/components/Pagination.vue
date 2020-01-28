@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav aria-label="Page navigation example">
-      <ul class="pagination">
+      <ul class="pagination justify-content-center">
         <!-- 若 pagination.has_pre 是 false 就加上 disabled -->
         <li class="page-item" :class="{'disabled': !childPaginations.has_pre}">
           <a
@@ -44,13 +44,13 @@ export default {
   name: "Product",
   // 接受外部傳入之資料 (pagination)
   // 利用 props 將資料傳給 Components 使用 (父元件 → 子元件)
-  props:{
-    childPaginations:{
-      type: Object,
+  props: {
+    childPaginations: {
+      type: Object
     }
   },
-  methods:{
-    getCurrentPage(page){
+  methods: {
+    getCurrentPage(page) {
       // 利用 emit 將 Components 的資料回傳 (子元件 → 父元件)
       //                事件名稱    , 傳出去的參數
       this.$emit("changeCurrentPage", page);
@@ -58,3 +58,35 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+// 修改 Pagination 樣式
+.pagination {
+  & > li > a {
+    background-color: white;
+    color: #c1170c;
+  }
+  & > li > a:focus,
+  & > li > span:focus,
+  & > li > span:hover {
+    color: #fff;
+    background-color: #eee;
+    border-color: #ddd;
+  }
+  & > li > a:hover {
+    color: #c1170c;
+    background-color: #eee;
+    border-color: #ddd;
+  }
+  & > .active > a {
+    color: #fff;
+    background-color: #c1170c !important;
+    border: solid 1px #c1170c !important;
+  }
+  & > .active > a:hover {
+    color: #fff;
+    background-color: #c1170c !important;
+    border: solid 1px #c1170c;
+  }
+}
+</style>

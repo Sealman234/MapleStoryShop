@@ -191,6 +191,8 @@
               </div>
             </article>
           </div>
+          <!-- 分頁 -->
+          <Pagination v-bind:childPaginations="pagination" @changeCurrentPage="getAllProducts" v-if="tempCategory==''"></Pagination>
           <!-- productModal -->
           <div
             class="modal fade"
@@ -253,6 +255,7 @@
 
 <script>
 import $ from "jquery";
+import Pagination from "../Pagination";
 
 export default {
   data() {
@@ -263,18 +266,32 @@ export default {
         loadingItem: ""
       },
       isLoading: false,
-      tempCategory: ""
+      tempCategory: "",
+      pagination: {},
+      allProducts: [], // 放有頁碼資訊的所有商品
     };
   },
   methods: {
-    getProducts() {
+    getAllProducts(page = 1) {
+      // 有頁碼 (所有商品)
       const vm = this;
-      // API 要用 Shopping 那段，不是用 admin 的
+      const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products?page=${page}`;
+      vm.isLoading = true;
+      this.$http.get(url).then(response => {
+        vm.allProducts = response.data.products;
+        vm.pagination = response.data.pagination;
+        // console.log(response);
+        vm.isLoading = false;
+      });
+    },
+    getProducts() {
+      // 沒頁碼 (其他類別)
+      const vm = this;
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`; // 取得商品列表_all
       vm.isLoading = true;
       this.$http.get(url).then(response => {
         vm.products = response.data.products;
-        console.log(response);
+        // console.log(response);
         vm.isLoading = false;
       });
     },
@@ -310,7 +327,7 @@ export default {
       const vm = this;
       // 所有商品
       if (vm.tempCategory == "") {
-        return vm.products;
+        return vm.allProducts;
       } else {
         // 有分類
         return vm.products.filter(function(item) {
@@ -321,8 +338,12 @@ export default {
       }
     }
   },
+  components: {
+    Pagination
+  },
   created() {
-    this.getProducts();
+    this.getAllProducts(); // 所有商品
+    this.getProducts(); // 其他類別
   }
 };
 </script>
@@ -339,7 +360,10 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
-  height: 640px;
+  height: 30vh; // 以裝置 (螢幕視窗) 大小為基準
+  @media (min-width: 992px) {
+    height: 50vh;
+  }
 }
 .category {
   .sticky-list {
