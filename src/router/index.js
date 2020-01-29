@@ -9,7 +9,8 @@ import Orders from '@/components/pages/Orders';
 
 import Base from '@/components/Base';
 import Index from '@/components/pages/Index';
-import Category from '@/components/pages/category';
+import Category from '@/components/pages/Category';
+import Detail from '@/components/pages/Detail';
 import AboutMS from '@/components/pages/AboutMS';
 import Login from '@/components/pages/Login';
 import CustomerOrder from '@/components/pages/CustomerOrder';
@@ -74,6 +75,11 @@ export default new VueRouter({
           name: 'Category', // 所有商品
           path: 'category',
           component: Category,
+        },
+        {
+          name: 'Detail', // 個別商品介紹
+          path: 'detail/:id', // 動態路由
+          component: Detail,
         },
         {
           name: 'AboutMS', // 關於楓之谷

@@ -8,7 +8,7 @@
     </loading>
     <!-- Banner -->
     <div class="banner"></div>
-    <!-- Main content -->
+    <!-- Main Content -->
     <div class="category container pt-3 pb-5">
       <!-- Breadcrumb -->
       <nav aria-label="breadcrumb">
@@ -128,7 +128,7 @@
           <h3 v-else>所有商品</h3>
           <div class="row mt-3">
             <article class="col-md-6 col-lg-4 mb-4" v-for="item in activeProducts" :key="item.id">
-              <div class="card border">
+              <div class="card border h-100">
                 <div class="border-bottom">
                   <!-- 依條件判斷，只會出現其中一個 badge -->
                   <span
@@ -153,35 +153,31 @@
                   ></figure>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title text-center">
+                  <h4 class="card-title text-center">
                     <a href="#" class="text-dark font-weight-bold">{{ item.title }}</a>
-                  </h5>
+                  </h4>
                   <p class="card-text text-secondary text-center">{{ item.content }}</p>
                   <div class="d-flex justify-content-center align-items-end">
                     <!-- 前者顯示僅有原價的 -->
                     <div class="h5" v-if="!item.price">{{ item.origin_price | currency }}</div>
                     <!-- 後者顯示有原價 + 優惠價的 -->
                     <del
-                      class="h6 text-secondary pr-2"
+                      class="h6 text-secondary pr-1"
                       v-if="item.price"
                     >{{ item.origin_price | currency }}</del>
-                    <div class="h5 text-maple" v-if="item.price">{{ item.price | currency }}</div>
+                    <div class="h5 text-maple font-weight-bold" v-if="item.price">{{ item.price | currency }}</div>
                   </div>
                 </div>
                 <div class="card-footer d-flex bg-white border-0 pt-0 flex-lg-column flex-xl-row">
-                  <button
-                    type="button"
+                  <!-- 使用 :to 來做動態路徑 -->
+                  <router-link
+                    :to="`/detail/${item.id}`"
                     class="btn btn-outline-secondary btn-xl-sm w-100 mr-2"
-                    @click="getProduct(item.id)"
-                  >
-                    <!-- 假設是 status.loadingItem 與目前的 item 的 id 相同，就顯示轉圈 -->
-                    <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
-                    查看更多
-                  </button>
+                  >查看更多</router-link>
                   <!-- 直接點加入購物車，就是 + 預設值 1 (後面沒寫第二個參數) -->
                   <button
                     type="button"
-                    class="btn btn-outline-danger btn-xl-sm ml-auto w-100 mt-lg-2 mt-xl-0"
+                    class="btn btn-outline-maple btn-xl-sm ml-auto w-100 mt-lg-2 mt-xl-0"
                     @click="addToCart(item.id)"
                   >
                     <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
@@ -192,61 +188,11 @@
             </article>
           </div>
           <!-- 分頁 -->
-          <Pagination v-bind:childPaginations="pagination" @changeCurrentPage="getAllProducts" v-if="tempCategory==''"></Pagination>
-          <!-- productModal -->
-          <div
-            class="modal fade"
-            id="productModal"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">{{ product.title }}</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <!-- 這個 imageUrl 已有雙向綁定 -->
-                  <img :src="product.imageUrl" class="img-fluid" alt />
-                  <blockquote class="blockquote mt-3">
-                    <p class="mb-0">{{ product.content }}</p>
-                    <footer class="blockquote-footer text-right">{{ product.description }}</footer>
-                  </blockquote>
-                  <div class="d-flex justify-content-between align-items-baseline">
-                    <div class="h4" v-if="!product.price">{{ product.origin_price | currency }} 元</div>
-                    <del class="h6" v-if="product.price">原價 {{ product.origin_price | currency }} 元</del>
-                    <div class="h4" v-if="product.price">現在只要 {{ product.price | currency }} 元</div>
-                  </div>
-                  <select name class="form-control mt-3" v-model="product.num">
-                    <!-- v-for：可選擇 1 ~ 10 筆 -->
-                    <!-- :value="num"：把 num 動態綁定成 value 的值 -->
-                    <!-- 單位使用 product.unit (可在產品後台設定) -->
-                    <option :value="num" v-for="num in 10" :key="num">選購 {{num}} {{product.unit}}</option>
-                  </select>
-                </div>
-                <div class="modal-footer">
-                  <div class="text-muted text-nowrap mr-3">
-                    小計
-                    <strong>{{ product.num * product.price | currency }}</strong> 元
-                  </div>
-                  <!-- 加入購物車 (要帶數量 product.num) -->
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    @click="addToCart(product.id, product.num)"
-                  >
-                    <i class="fas fa-spinner fa-spin" v-if="product.id === status.loadingItem"></i>
-                    加到購物車
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Pagination
+            v-bind:childPaginations="pagination"
+            @changeCurrentPage="getAllProducts"
+            v-if="tempCategory==''"
+          ></Pagination>
         </section>
       </div>
     </div>
@@ -256,7 +202,6 @@
 <script>
 import $ from "jquery";
 import Pagination from "../Pagination";
-
 export default {
   data() {
     return {
@@ -268,7 +213,7 @@ export default {
       isLoading: false,
       tempCategory: "",
       pagination: {},
-      allProducts: [], // 放有頁碼資訊的所有商品
+      allProducts: [] // 放有頁碼資訊的所有商品
     };
   },
   methods: {
@@ -280,7 +225,7 @@ export default {
       this.$http.get(url).then(response => {
         vm.allProducts = response.data.products;
         vm.pagination = response.data.pagination;
-        // console.log(response);
+        console.log(response);
         vm.isLoading = false;
       });
     },
@@ -295,17 +240,6 @@ export default {
         vm.isLoading = false;
       });
     },
-    getProduct(id) {
-      const vm = this;
-      const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/product/${id}`;
-      vm.status.loadingItem = id; // 判斷目前畫面上是哪一個元素正在讀取中
-      this.$http.get(url).then(response => {
-        vm.product = response.data.product; // 載入並讀取資料
-        $("#productModal").modal("show"); // AJAX 結束之後將 Modal 打開
-        console.log(response);
-        vm.status.loadingItem = ""; // 讀取完，將這個值改回空值
-      });
-    },
     addToCart(id, qty = 1) {
       const vm = this;
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
@@ -318,7 +252,6 @@ export default {
         console.log(response);
         vm.status.loadingItem = "";
         // vm.getCart(); // 加入後刷新購物車
-        $("#productModal").modal("hide");
       });
     }
   },
@@ -344,6 +277,7 @@ export default {
   created() {
     this.getAllProducts(); // 所有商品
     this.getProducts(); // 其他類別
+    console.log(this.$route.params.id);
   }
 };
 </script>
@@ -401,7 +335,7 @@ export default {
   }
   .card {
     transition: all 0.5s;
-    box-shadow: 0 1px 5px #000;
+    box-shadow: 0 1px 3px #000;
     &:hover {
       box-shadow: 0 2px 10px #000;
     }
