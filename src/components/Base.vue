@@ -4,11 +4,6 @@
     <header class="fixed-top">
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-lg">
-          <div class="ms-logo">
-            <h1 class="m-0">
-              <router-link to="/index" class="navbar-brand mr-auto" href="#">MapleStory</router-link>
-            </h1>
-          </div>
           <button
             class="navbar-toggler"
             type="button"
@@ -20,6 +15,11 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
+          <div class="ms-logo">
+            <h1 class="m-0">
+              <router-link to="/index" class="navbar-brand ml-auto" href="#">MapleStory</router-link>
+            </h1>
+          </div>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
@@ -149,14 +149,19 @@ export default {
 .navbar {
   border-bottom: 4px solid #d3d3d3;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-  .ms-logo .navbar-brand {
-    background-image: url(../assets/images/MapleStory.svg);
-    width: 150px;
-    height: 57.79px;
-    display: block;
-    text-indent: 101%;
-    overflow: hidden;
-    white-space: nowrap;
+  .ms-logo {
+    @media (max-width: 992px) {
+      margin: 0 auto;
+    }
+    .navbar-brand {
+      background-image: url(../assets/images/MapleStory.svg);
+      width: 150px;
+      height: 57.79px;
+      display: block;
+      text-indent: 101%;
+      overflow: hidden;
+      white-space: nowrap;
+    }
   }
   li.nav-item {
     float: left;

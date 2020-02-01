@@ -18,7 +18,7 @@
         </ol>
       </nav>
       <!-- Main Content -->
-      <div class="row">
+      <div class="row main">
         <div class="col-md-6 mb-4 mb-md-0">
           <div class="double-border p-4 h-100">
             <figure class="mb-4 item-image" :style="{backgroundImage: `url(${product.imageUrl})`}"></figure>
@@ -170,57 +170,58 @@ export default {
   width: 76.5957446809px;
   height: 100px;
 }
-// 左邊
-figure.item-image {
-  height: 220px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-.double-border {
-  border-width: 4px;
-  border-color: #939699;
-  border-style: double;
-  border-radius: 10px;
-}
-.ship-info {
-  border: 3px solid #ccc;
-  border-radius: 10px;
-}
-// 右邊
-.category-badge {
-  font-size: 14px;
-  padding: 5px 8px;
-}
-.product-title span {
-  font-weight: 600;
-  letter-spacing: 3px;
-  position: relative;
-  &::after {
-    background: #adb5bd;
-    bottom: 3px;
-    content: "";
-    height: 2px;
-    left: 0;
-    position: absolute;
-    right: 0;
+.main {
+  .double-border {
+    border-width: 4px;
+    border-color: #939699;
+    border-style: double;
+    border-radius: 10px;
+    // left side
+    figure.item-image {
+      height: 220px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    // right side
+    .category-badge {
+      font-size: 14px;
+      padding: 5px 8px;
+    }
+    .product-title span {
+      font-weight: 600;
+      letter-spacing: 3px;
+      position: relative;
+      &::after {
+        background: #adb5bd;
+        bottom: 3px;
+        content: "";
+        height: 2px;
+        left: 0;
+        position: absolute;
+        right: 0;
+      }
+    }
+    .sale-price {
+      font-weight: 600;
+      font-size: 22px;
+    }
+    select.form-control {
+      padding: 10px;
+      height: 100%;
+      border: 1px solid #6c757d;
+      font-size: 16px;
+      letter-spacing: 2px;
+    }
+    select.form-control:hover {
+      border: 1px solid #343a40;
+      box-shadow: 0 1px 5px #ccc;
+      transition: 0.3s all;
+    }
+    .ship-info {
+      border: 3px solid #ccc;
+      border-radius: 10px;
+    }
   }
-}
-
-.sale-price {
-  font-weight: 600;
-  font-size: 22px;
-}
-select.form-control {
-  padding: 10px;
-  height: 100%;
-  border: 1px solid #6c757d;
-  font-size: 16px;
-  letter-spacing: 2px;
-}
-select.form-control:hover {
-  border: 1px solid #343a40;
-  box-shadow: 0 1px 5px #ccc;
-  transition: 0.3s all;
 }
 </style>

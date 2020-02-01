@@ -49,7 +49,7 @@
             >
               <div class="row no-gutters">
                 <div class="col-md-4 align-self-center text-center text-md-right">
-                  <img src="../../assets/images/mesobag.png" height="50px" alt />
+                  <img src="../../assets/images/Korean Fan.png" height="50px" alt />
                 </div>
                 <div class="col-md-8 align-self-center text-center text-md-left">
                   <p>熱銷商品</p>
@@ -64,7 +64,7 @@
             >
               <div class="row no-gutters">
                 <div class="col-md-4 align-self-center text-center text-md-right">
-                  <img src="../../assets/images/Korean Fan.png" height="50px" alt />
+                  <img src="../../assets/images/Poison Mushroom.png" height="50px" alt />
                 </div>
                 <div class="col-md-8 align-self-center text-center text-md-left">
                   <p>最新商品</p>
@@ -202,6 +202,7 @@
 <script>
 import $ from "jquery";
 import Pagination from "../Pagination";
+
 export default {
   data() {
     return {
