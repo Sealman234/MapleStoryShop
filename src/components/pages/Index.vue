@@ -324,10 +324,13 @@ export default {
 <style scope lang="scss">
 // Loading
 .loading-image {
-  background-image: url(../../assets/images/gif/slime.gif);
+  // background-image: url(../../assets/images/gif/slime.gif);
+  background-image: url(../../assets/images/gif/KingSlime.gif);
   background-size: cover;
-  width: 76.5957446809px;
-  height: 100px;
+  // width: 76.5957446809px;
+  // height: 100px;
+  width: 219px;
+  height: 230px;
 }
 
 // Banner

@@ -6,8 +6,10 @@
         <div class="loading-image"></div>
       </template>
     </loading>
+
     <!-- Banner -->
     <div class="banner"></div>
+
     <!-- Main Content -->
     <div class="category container pt-3 pb-5">
       <!-- Breadcrumb -->
@@ -124,8 +126,8 @@
         </section>
         <!-- 商品列表 -->
         <section class="col-12 col-lg-9">
-          <h3 v-if="tempCategory">{{ tempCategory }}</h3>
-          <h3 v-else>所有商品</h3>
+          <h3 v-if="tempCategory" class="py-2 py-lg-0">{{ tempCategory }}</h3>
+          <h3 v-else class="py-2 py-lg-0">所有商品</h3>
           <div class="row mt-3">
             <article class="col-md-6 col-lg-4 mb-4" v-for="item in activeProducts" :key="item.id">
               <div class="card border h-100">
@@ -165,7 +167,10 @@
                       class="h6 text-secondary pr-1"
                       v-if="item.price"
                     >{{ item.origin_price | currency }}</del>
-                    <div class="h5 text-maple font-weight-bold" v-if="item.price">{{ item.price | currency }}</div>
+                    <div
+                      class="h5 text-maple font-weight-bold"
+                      v-if="item.price"
+                    >{{ item.price | currency }}</div>
                   </div>
                 </div>
                 <div class="card-footer d-flex bg-white border-0 pt-0 flex-lg-column flex-xl-row">
@@ -285,10 +290,10 @@ export default {
 
 <style scoped lang="scss">
 .loading-image {
-  background-image: url(../../assets/images/gif/slime.gif);
+  background-image: url(../../assets/images/gif/KingSlime.gif);
   background-size: cover;
-  width: 76.5957446809px;
-  height: 100px;
+  width: 219px;
+  height: 230px;
 }
 .banner {
   background-image: url(../../assets/images/mobs.jpg);

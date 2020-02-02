@@ -12,8 +12,8 @@ export default {
 
 <style scoped>
 .tiles {
-  height: 85px;
-  background-image: url(../assets/images/fulltiles.png);
+  height: 148px;
+  background-image: url(../assets/images/OmegaSector-thick.png);
   background-repeat: repeat-x;
   z-index: 9;
 }

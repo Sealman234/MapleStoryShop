@@ -100,7 +100,6 @@
     </main>
     <!-- Footer -->
     <footer class="bg-white pt-5">
-      <!-- <div class="tiles"></div> -->
       <div class="container pt-5">
         <div class="position-relative pt-1">
           <img
@@ -113,7 +112,7 @@
             src="../assets/images/gif/gugu2.gif"
             height="100px"
             class="position-absolute"
-            style="bottom: 0px; right: 60px;"
+            style="bottom: -1px; right: 60px;"
           />
           <img
             src="../assets/images/gif/gugu2.gif"
@@ -125,7 +124,7 @@
             src="../assets/images/gif/hello2.gif"
             height="100px"
             class="position-absolute"
-            style="bottom: 0px; left: 0px;"
+            style="bottom: -1px; left: 0px;"
           />
         </div>
       </div>

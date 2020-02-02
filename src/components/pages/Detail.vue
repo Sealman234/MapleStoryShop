@@ -1,10 +1,12 @@
 <template>
   <div>
+    <!-- Loading -->
     <loading :active.sync="isLoading">
       <template slot="default">
         <div class="loading-image"></div>
       </template>
     </loading>
+
     <div class="container py-3">
       <!-- Breadcrumb -->
       <nav aria-label="breadcrumb">
@@ -17,6 +19,7 @@
           </li>
         </ol>
       </nav>
+
       <!-- Main Content -->
       <div class="row main">
         <div class="col-md-6 mb-4 mb-md-0">
@@ -165,10 +168,10 @@ export default {
 
 <style scoped lang="scss">
 .loading-image {
-  background-image: url(../../assets/images/gif/slime.gif);
+  background-image: url(../../assets/images/gif/KingSlime.gif);
   background-size: cover;
-  width: 76.5957446809px;
-  height: 100px;
+  width: 219px;
+  height: 230px;
 }
 .main {
   .double-border {
