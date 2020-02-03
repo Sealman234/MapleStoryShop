@@ -103,28 +103,40 @@
       <div class="container pt-5">
         <div class="position-relative pt-1">
           <img
-            src="../assets/images/gif/gugu2.gif"
-            height="50px"
+            src="../assets/images/roger.png"
+            width="70px"
             class="position-absolute"
-            style="bottom: 0px; right: 160px;"
+            style="bottom: -2px; right: 0px;"
           />
           <img
-            src="../assets/images/gif/gugu2.gif"
-            height="100px"
+            src="../assets/images/gif/mushroom.gif"
+            width="50px"
             class="position-absolute"
-            style="bottom: -1px; right: 60px;"
+            style="bottom: -2px; right: 70px;"
           />
           <img
-            src="../assets/images/gif/gugu2.gif"
-            height="50px"
+            src="../assets/images/gif/mushroom.gif"
+            width="70px"
             class="position-absolute"
-            style="bottom: 0px; right: 0px;"
+            style="bottom: -2px; right: 120px;"
           />
           <img
-            src="../assets/images/gif/hello2.gif"
-            height="100px"
+            src="../assets/images/gif/mushroom.gif"
+            width="50px"
             class="position-absolute"
-            style="bottom: -1px; left: 0px;"
+            style="bottom: -2px; right: 190px;"
+          />
+          <img
+            src="../assets/images/gif/mushroom2.gif"
+            width="70px"
+            class="position-absolute"
+            style="bottom: -2px; left: 70px;"
+          />
+          <img
+            src="../assets/images/mary.png"
+            width="70px"
+            class="position-absolute"
+            style="bottom: -2px; left: 0px;"
           />
         </div>
       </div>
