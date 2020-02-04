@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="py-5">
     <loading :active.sync="isLoading"></loading>
-    <div class="text-right mt-4">
+    <div class="text-sm-right">
       <!-- Button trigger modal -->
-      <button class="btn btn-primary" @click="openModal(true)">建立新優惠券</button>
+      <button class="btn btn-maple" @click="openModal(true)">建立新優惠券</button>
     </div>
-    <table class="table mt-4">
-      <thead>
+    <table class="table border-bottom my-4">
+      <thead class="thead-light">
         <tr>
           <th>名稱</th>
           <th>折扣百分比</th>
@@ -26,8 +26,8 @@
           </td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button class="btn btn-sm btn-outline-primary" @click="openModal(false, item)">編輯</button>
-              <button class="btn btn-sm btn-outline-danger" @click="openDelModal(item)">刪除</button>
+              <button class="btn btn-sm btn-outline-moderate" @click="openModal(false, item)">編輯</button>
+              <button class="btn btn-sm btn-outline-maple" @click="openDelModal(item)">刪除</button>
             </div>
           </td>
         </tr>
@@ -46,11 +46,11 @@
     >
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content border-0">
-          <div class="modal-header bg-dark text-white">
+          <div class="modal-header bg-maple text-white">
             <h5 class="modal-title" id="exampleModalLabel">
               <span>新增優惠券</span>
             </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -105,7 +105,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary" @click="updateCoupon">確認</button>
+            <button type="button" class="btn btn-maple" @click="updateCoupon">確認</button>
           </div>
         </div>
       </div>
@@ -145,7 +145,7 @@
 
 <script>
 import $ from "jquery";
-import Pagination from "../Pagination";
+import Pagination from "../../Pagination";
 
 export default {
   data() {

@@ -1,38 +1,38 @@
 <template>
-  <div>
+  <div class="py-5">
     <loading :active.sync="isLoading"></loading>
-    <div class="text-right mt-4">
+    <div class="text-sm-right">
       <!-- Button trigger modal -->
-      <button class="btn btn-primary" @click="openModal(true)">建立新產品</button>
+      <button class="btn btn-maple" @click="openModal(true)">建立新產品</button>
     </div>
-    <table class="table mt-4">
-      <thead>
+    <table class="table my-4 border-bottom">
+      <thead class="thead-light">
         <tr>
           <!-- 限制寬度 -->
-          <th width="100">分類</th>
-          <th>產品名稱</th>
-          <th width="120">原價</th>
-          <th width="120">售價</th>
-          <th width="100">是否啟用</th>
-          <th width="120">編輯</th>
+          <th>分類</th>
+          <th>品名</th>
+          <th>原價</th>
+          <th>售價</th>
+          <th>狀態</th>
+          <th>編輯</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(item) in products" :key="item.id">
-          <td>{{ item.category }}</td>
-          <td>{{ item.title }}</td>
+          <td class="align-middle">{{ item.category }}</td>
+          <td class="align-middle">{{ item.title }}</td>
           <!-- 金額靠右 -->
-          <td class="text-right">{{ item.origin_price | currency}}</td>
-          <td class="text-right">{{ item.price | currency}}</td>
-          <td>
+          <td class="align-middle text-right">{{ item.origin_price | currency}}</td>
+          <td class="align-middle text-right">{{ item.price | currency}}</td>
+          <td class="align-middle">
             <!-- 產品如果為啟用 is_enabled == 1 -->
             <span v-if="item.is_enabled" class="text-success">啟用</span>
-            <span v-else class="text-danger">未啟用</span>
+            <span v-else class="text-maple">未啟用</span>
           </td>
-          <td>
+          <td class="align-middle">
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button class="btn btn-sm btn-outline-primary" @click="openModal(false, item)">編輯</button>
-              <button class="btn btn-sm btn-outline-danger" @click="openDelModal(item)">刪除</button>
+              <button class="btn btn-sm btn-outline-moderate" @click="openModal(false, item)">編輯</button>
+              <button class="btn btn-sm btn-outline-maple" @click="openDelModal(item)">刪除</button>
             </div>
           </td>
         </tr>
@@ -51,11 +51,11 @@
     >
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content border-0">
-          <div class="modal-header bg-dark text-white">
+          <div class="modal-header bg-maple text-white">
             <h5 class="modal-title" id="exampleModalLabel">
               <span>新增產品</span>
             </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -186,7 +186,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary" @click="updateProduct">確認</button>
+            <button type="button" class="btn btn-maple" @click="updateProduct">確認</button>
           </div>
         </div>
       </div>
@@ -202,21 +202,21 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content border-0">
-          <div class="modal-header bg-danger text-white">
+          <div class="modal-header bg-maple text-white">
             <h5 class="modal-title" id="exampleModalLabel">
               <span>刪除產品</span>
             </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             是否刪除
-            <strong class="text-danger">{{ tempProduct.title }}</strong> 商品(刪除後將無法恢復)。
+            <strong class="text-maple">{{ tempProduct.title }}</strong> 商品(刪除後將無法恢復)。
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-danger" @click="deleteProduct">確認刪除</button>
+            <button type="button" class="btn btn-maple" @click="deleteProduct">確認刪除</button>
           </div>
         </div>
       </div>
@@ -226,7 +226,7 @@
 
 <script>
 import $ from "jquery";
-import Pagination from "../Pagination";
+import Pagination from "../../Pagination";
 
 export default {
   data() {
@@ -328,7 +328,7 @@ export default {
             vm.$set(vm.tempProduct, "imageUrl", response.data.imageUrl);
           } else {
             // 上傳檔案失敗的話，透過 Event Bus 提醒用戶錯誤在哪裡
-            this.$bus.$emit("message:push", response.data.message, "danger");
+            this.$bus.$emit("message:push", response.data.message, "maple");
           }
         });
     }

@@ -11,7 +11,7 @@
         <div class="banner"></div>
         <form class="mt-4" @submit.prevent="payOrder">
           <!-- 購買完成後隱藏 -->
-          <table class="table" v-if="!order.is_paid">
+          <table class="table border-bottom mb-4" v-if="!order.is_paid">
             <thead class="thead-light">
               <th>商品名稱</th>
               <th>數量</th>
@@ -36,7 +36,7 @@
           <div class="text-center" v-if="!order.is_paid">
             <h2 class="font-weight-bold mb-4 pb-2">訂單資訊</h2>
           </div>
-          <table class="table">
+          <table class="table border-bottom">
             <tbody>
               <tr>
                 <th>Email</th>

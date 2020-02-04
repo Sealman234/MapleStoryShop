@@ -1,21 +1,20 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 // import HelloWorld from '@/components/HelloWorld';
-
-import Dashboard from '@/components/Dashboard';
-import Products from '@/components/pages/Products';
-import Coupons from '@/components/pages/Coupons';
-import Orders from '@/components/pages/Orders';
-
+// Admin
+import Dashboard from '@/components/admin/Dashboard';
+import Products from '@/components/admin/pages/Products';
+import Coupons from '@/components/admin/pages/Coupons';
+import Orders from '@/components/admin/pages/Orders';
+// Guest
 import Base from '@/components/Base';
 import Index from '@/components/pages/Index';
 import Category from '@/components/pages/Category';
 import Detail from '@/components/pages/Detail';
 import AboutMS from '@/components/pages/AboutMS';
-import Login from '@/components/pages/Login';
 import CustomerOrder from '@/components/pages/CustomerOrder';
 import CustomerCheckout from '@/components/pages/CustomerCheckout';
-
+import Login from '@/components/pages/Login';
 
 Vue.use(VueRouter);
 
@@ -25,11 +24,6 @@ export default new VueRouter({
       path: '*',
       redirect: '/index',
     },
-    // {
-    //   name: 'Login',
-    //   path: '/login',
-    //   component: Login,
-    // },
     {
       name: 'Dashboard',
       path: '/admin',
