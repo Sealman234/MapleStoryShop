@@ -3,7 +3,7 @@
     <!-- Header -->
     <header class="fixed-top">
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-lg">
+        <div class="container">
           <button
             class="navbar-toggler"
             type="button"
@@ -111,26 +111,26 @@
           <img
             src="../assets/images/gif/mushroom.gif"
             width="50px"
-            class="position-absolute"
-            style="bottom: -2px; right: 70px;"
+            class="position-absolute big-mushroom"
+            style="bottom: -2px; right: 75px;"
           />
           <img
             src="../assets/images/gif/mushroom.gif"
             width="70px"
-            class="position-absolute"
-            style="bottom: -2px; right: 120px;"
+            class="position-absolute d-none d-sm-block"
+            style="bottom: -2px; right: 125px;"
           />
           <img
             src="../assets/images/gif/mushroom.gif"
             width="50px"
-            class="position-absolute"
-            style="bottom: -2px; right: 190px;"
+            class="position-absolute d-none d-sm-block"
+            style="bottom: -2px; right: 195px;"
           />
           <img
             src="../assets/images/gif/mushroom2.gif"
             width="70px"
             class="position-absolute"
-            style="bottom: -2px; left: 70px;"
+            style="bottom: -2px; left: 75px;"
           />
           <img
             src="../assets/images/mary.png"
@@ -208,8 +208,18 @@ export default {
     }
   }
 }
+
 // Main (主要內容)
 main {
   margin-top: 78px;
+}
+
+// Footer
+footer{
+  .big-mushroom{
+    @media(max-width: 576px){
+      width: 70px;
+    }
+  }
 }
 </style>

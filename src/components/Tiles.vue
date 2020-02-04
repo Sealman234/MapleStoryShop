@@ -34,7 +34,7 @@ export default {
     border-radius: 2px;
     border: 1px solid #221111;
     padding: 3px;
-    width: 50%;
+    width: 60%;
     opacity: 0.9;
   }
 }
