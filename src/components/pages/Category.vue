@@ -185,7 +185,7 @@
                     class="btn btn-outline-maple btn-xl-sm ml-auto w-100 mt-lg-2 mt-xl-0"
                     @click="addToCart(item.id)"
                   >
-                    <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
+                    <!-- <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i> -->
                     加入購物車
                   </button>
                 </div>
@@ -213,9 +213,9 @@ export default {
     return {
       products: [],
       product: {},
-      status: {
-        loadingItem: ""
-      },
+      // status: {
+      //   loadingItem: ""
+      // },
       isLoading: false,
       tempCategory: "",
       pagination: {},
@@ -249,15 +249,17 @@ export default {
     addToCart(id, qty = 1) {
       const vm = this;
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
-      vm.status.loadingItem = id;
+      // vm.status.loadingItem = id;
+      vm.isLoading = true;
       const cart = {
         product_id: id,
         qty
       };
       this.$http.post(url, { data: cart }).then(response => {
         console.log(response);
-        vm.status.loadingItem = "";
         // vm.getCart(); // 加入後刷新購物車
+        // vm.status.loadingItem = "";
+        vm.isLoading = false;
       });
     }
   },

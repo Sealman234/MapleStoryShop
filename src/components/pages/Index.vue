@@ -73,7 +73,7 @@
                       class="btn btn-outline-maple btn-xl-sm ml-auto w-100 mt-md-2 mt-xl-0"
                       @click="addToCart(item.id)"
                     >
-                      <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
+                      <!-- <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i> -->
                       立即購買
                     </button>
                   </div>
@@ -269,10 +269,10 @@ export default {
         }
       },
       products: [],
-      isLoading: false,
-      status: {
-        loadingItem: ""
-      }
+      isLoading: false
+      // status: {
+      //   loadingItem: ""
+      // }
     };
   },
   methods: {
@@ -289,15 +289,17 @@ export default {
     addToCart(id, qty = 1) {
       const vm = this;
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
-      vm.status.loadingItem = id;
+      // vm.status.loadingItem = id;
+      vm.isLoading = true;
       const cart = {
         product_id: id,
         qty
       };
       this.$http.post(url, { data: cart }).then(response => {
         console.log(response);
-        vm.status.loadingItem = "";
         // vm.getCart(); // 加入後刷新購物車
+        // vm.status.loadingItem = "";
+        vm.isLoading = false;
       });
     }
   },
