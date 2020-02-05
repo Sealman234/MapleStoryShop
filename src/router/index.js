@@ -6,7 +6,7 @@ import Dashboard from '@/components/admin/Dashboard';
 import Products from '@/components/admin/pages/Products';
 import Coupons from '@/components/admin/pages/Coupons';
 import Orders from '@/components/admin/pages/Orders';
-// Guest
+// Shopping
 import Base from '@/components/Base';
 import Index from '@/components/pages/Index';
 import Category from '@/components/pages/Category';
@@ -90,12 +90,12 @@ export default new VueRouter({
           path: 'customerCheckout/:orderId',
           component: CustomerCheckout,
         },
-        {
-          name: 'Login', // 登入
-          path: 'login',
-          component: Login,
-        },
       ],
+    },
+    {
+      name: 'Login', // 登入
+      path: '/login',
+      component: Login,
     },
   ]
 });

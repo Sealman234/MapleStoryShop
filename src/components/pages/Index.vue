@@ -172,7 +172,7 @@
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
-  name: "Swiper",
+  name: "Index",
   components: {
     swiper,
     swiperSlide
