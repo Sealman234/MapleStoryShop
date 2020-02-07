@@ -10,8 +10,8 @@
     <!-- Banner -->
     <div class="banner d-flex justify-content-center align-items-center">
       <h3 class="text-center">
-        回到最初的感動
-        <br />我在冒險的起點等你！
+        <div>回到最初的感動…</div>
+        <div class="typing">我在冒險的起點等你！</div>
       </h3>
     </div>
 
@@ -350,8 +350,36 @@ export default {
     background-color: rgba(0, 0, 0, 0.55); // 0.45
     padding: 10px;
     border-radius: 10px;
+    width: 300px;
     min-height: 90px;
     max-height: 100%;
+    .typing {
+      width: 10em;
+      white-space: nowrap;
+      border-right: 2px solid transparent; // 文字跟游標隔開 2px
+      animation: typing 3.5s steps(10, end), blink-caret 0.75s step-end infinite;
+      overflow: hidden;
+      letter-spacing: 0;
+    }
+    // 打字動畫
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 10em;
+      }
+    }
+    // 閃爍游標
+    @keyframes blink-caret {
+      from,
+      to {
+        box-shadow: 2px 0 0 0 transparent;
+      }
+      50% {
+        box-shadow: 2px 0 0 0;
+      }
+    }
   }
 }
 

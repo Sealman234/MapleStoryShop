@@ -49,18 +49,6 @@
               <li class="nav-item">
                 <span></span>
                 <router-link
-                  to="/aboutMS"
-                  class="nav-link p-3"
-                  data-toggle="collapse"
-                  data-target=".navbar-collapse.show"
-                >
-                  <i class="fas fa-book"></i>
-                  關於楓之谷
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <span></span>
-                <router-link
                   to="/customerOrder"
                   class="nav-link p-3"
                   data-toggle="collapse"

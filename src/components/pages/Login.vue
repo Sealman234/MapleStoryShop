@@ -1,13 +1,13 @@
 <template>
   <div>
-    <Header></Header>
     <section class="bg-login">
-      <div class="py-5">
+      <Header></Header>
+      <div class="">
         <form class="form-signin" @submit.prevent="signin">
           <div class="ms-logo mb-2">
             <h1 class="m-0 navbar-brand mx-auto" href="#">MapleStory</h1>
           </div>
-          <label for="inputEmail" class="sr-only">Email address</label>
+          <label for="inputEmail">帳號</label>
           <input
             type="email"
             id="inputEmail"
@@ -17,7 +17,7 @@
             autofocus
             v-model="user.username"
           />
-          <label for="inputPassword" class="sr-only">Password</label>
+          <label for="inputPassword">密碼</label>
           <input
             type="password"
             id="inputPassword"
@@ -26,8 +26,9 @@
             required
             v-model="user.password"
           />
-          <button class="btn btn-maple btn-block" type="submit">管理員登入</button>
-          <button class="btn btn-maple btn-block" type="submit">回到首頁</button>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-lg btn-maple" type="submit">登入</button>
+          </div>
         </form>
       </div>
     </section>
@@ -71,12 +72,21 @@ section.bg-login {
   background-repeat: no-repeat;
   background-position: center center;
   height: 100vh;
-  margin-top: 78px;
+  padding-top: 130px;
   .form-signin {
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.65);
     width: 100%;
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
+    @media (min-width: 576px) {
+      max-width: 500px;
+      padding: 30px 30px;
+    }
+    @media (min-width: 768px) {
+      margin-top: 48px;
+    }
     .ms-logo .navbar-brand {
       display: block;
       background-image: url(../../assets/images/MapleStory.svg);
@@ -87,6 +97,13 @@ section.bg-login {
       text-indent: 101%;
       overflow: hidden;
       white-space: nowrap;
+      @media (min-width: 576px) {
+        height: 150px;
+      }
+    }
+    label {
+      font-weight: 800;
+      letter-spacing: 1px;
     }
     .form-control {
       position: relative;
@@ -96,6 +113,17 @@ section.bg-login {
       font-size: 16px;
       &:focus {
         z-index: 2;
+        box-shadow: 0 0 0;
+        border: 1px solid #274878;
+        outline: none;
+      }
+    }
+    .btn {
+      margin-top: 8px;
+      padding-left: 22px;
+      padding-right: 22px;
+      @media (max-width: 575px) {
+        width: 100%;
       }
     }
   }

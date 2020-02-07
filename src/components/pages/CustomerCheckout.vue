@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-10">
         <!-- 購買完成後出現 -->
-        <div class="banner"></div>
+        <div class="banner" v-if="order.is_paid"></div>
         <form class="mt-4" @submit.prevent="payOrder">
           <!-- 購買完成後隱藏 -->
           <table class="table border-bottom mb-4" v-if="!order.is_paid">
