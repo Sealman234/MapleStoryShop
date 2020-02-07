@@ -29,10 +29,40 @@
       <router-link to="/category" class="text-maple text-decoration-none">進入商城</router-link>
     </section>
 
+    <!-- 裝備專為初心者所打造 -->
+    <section class="pt-5 pb-4 pb-md-5 comment">
+      <div class="container text-center">
+        <h2 class="font-weight-bolder mb-4 pb-2">裝備專為初心者所打造</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="npc npc1 ml-auto mr-auto mb-3"></div>
+            <div class="h5">上班族阿凱</div>
+            <p
+              class="mb-3 mb-md-0"
+            >在我還沒發現 MapleStory Shop 之前，我下班後還得自己花時間找資料。多虧了這裡有各式各樣的裝備與詳細的介紹，讓我省下許多時間並且購買到想要的裝備。</p>
+          </div>
+          <div class="col-md-4">
+            <div class="npc npc2 ml-auto mr-auto mb-3"></div>
+            <div class="h5">大學生悠娜</div>
+            <p
+              class="mb-3 mb-md-0"
+            >男友找我一起玩楓之谷，但是他平常都要上班，所以我總是一個人解任務。購買 MapleStory Shop 的裝備後，我練等的速度加快許多，不只提升我的遊戲體驗，也讓我找到一群好朋友交流哩。</p>
+          </div>
+          <div class="col-md-4">
+            <div class="npc npc3 ml-auto mr-auto mb-3"></div>
+            <div class="h5">高中生奈蘿</div>
+            <p
+              class="mb-3 mb-md-0"
+            >每天下課回到家的第一件事就是玩楓之谷，可是我每次都打不過任務裡的 BOSS。但是自從我買了 MapleStory Shop 推薦的裝備之後，打起怪來就像切菜一樣輕鬆了呢！</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 熱銷商品 -->
-    <section class="pt-5 mb-3 best-seller">
-      <div class="container pb-5 text-center best-seller">
-        <h2 class="font-weight-bolder mb-4 pb-2">熱銷商品</h2>
+    <section class="mb-3 best-seller">
+      <div class="container pb-5 text-center">
+        <h2 class="font-weight-bolder mb-4 pb-2">最受歡迎的商品</h2>
         <div class="swiper-container">
           <div class="swiper-wrapper">
             <!-- 加上 v-if 使得數據變更時觸發並重新渲染整個 Swiper -->
@@ -109,7 +139,7 @@
             </swiper-slide>
             <swiper-slide>
               <div class="slide">
-                <img src="../../assets/images/Job/wizard.png" class="img-fluid" alt />
+                <img src="../../assets/images/Job/sword.png" class="img-fluid" alt />
               </div>
             </swiper-slide>
             <swiper-slide>
@@ -119,7 +149,17 @@
             </swiper-slide>
             <swiper-slide>
               <div class="slide">
+                <img src="../../assets/images/Job/knight.png" class="img-fluid" alt />
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="slide">
                 <img src="../../assets/images/Job/thief-male.jpg" class="img-fluid" alt />
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="slide">
+                <img src="../../assets/images/Job/thief.jpg" class="img-fluid" alt />
               </div>
             </swiper-slide>
             <swiper-slide>
@@ -129,17 +169,12 @@
             </swiper-slide>
             <swiper-slide>
               <div class="slide">
-                <img src="../../assets/images/Job/sword.png" class="img-fluid" alt />
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="slide">
                 <img src="../../assets/images/Job/magician.jpg" class="img-fluid" alt />
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="slide">
-                <img src="../../assets/images/Job/knight.png" class="img-fluid" alt />
+                <img src="../../assets/images/Job/wizard.png" class="img-fluid" alt />
               </div>
             </swiper-slide>
             <swiper-slide>
@@ -150,11 +185,6 @@
             <swiper-slide>
               <div class="slide">
                 <img src="../../assets/images/Job/archer.jpg" class="img-fluid" alt />
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="slide">
-                <img src="../../assets/images/Job/thief.jpg" class="img-fluid" alt />
               </div>
             </swiper-slide>
           </swiper>
@@ -170,7 +200,6 @@
 
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
-
 export default {
   name: "Index",
   components: {
@@ -389,6 +418,34 @@ export default {
     display: inline-block;
     font-weight: 600;
     border-bottom: 3px solid #c1170c;
+  }
+}
+
+// 裝備專為初心者所打造
+.comment {
+  background-color: #ededed;
+  h2 {
+    display: inline-block;
+    font-weight: 600;
+    border-bottom: 3px solid #c1170c;
+  }
+  .npc {
+    background: #f8f9fa;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .npc1 {
+    background-image: url(../../assets/images/npc1.png);
+  }
+  .npc2 {
+    background-image: url(../../assets/images/npc2.png);
+  }
+  .npc3 {
+    background-image: url(../../assets/images/npc3.png);
   }
 }
 
