@@ -271,7 +271,7 @@ export default {
 <style scope lang="scss">
 // Loading
 .loading-image {
-  background-image: url(../../assets/images/gif/KingSlime.gif);
+  background-image: url(../../assets/images/GIFs/KingSlime.gif);
   background-size: cover;
   width: 219px;
   height: 230px;

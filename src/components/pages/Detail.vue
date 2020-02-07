@@ -14,6 +14,9 @@
           <li class="breadcrumb-item">
             <router-link to="/index" class="text-maple">首頁</router-link>
           </li>
+          <li class="breadcrumb-item">
+            <router-link to="/category" class="text-maple">所有商品</router-link>
+          </li>
           <li class="breadcrumb-item active" aria-current="page">
             <span>{{ product.title }}</span>
           </li>
@@ -23,7 +26,7 @@
       <!-- Main Content -->
       <div class="row main">
         <div class="col-md-6 mb-4 mb-md-0">
-          <div class="double-border p-4 h-100">
+          <div class="double-border p-3 p-sm-4 h-100">
             <figure class="mb-4 item-image" :style="{backgroundImage: `url(${product.imageUrl})`}"></figure>
             <h5 class="pt-4 text-maple border-top">【商品敘述】</h5>
             <p>{{ product.content }}</p>
@@ -32,7 +35,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <div class="double-border p-4">
+          <div class="double-border p-3 p-sm-4">
             <!-- 商品類別 -->
             <span
               class="badge float-right badge-danger category-badge"
@@ -69,14 +72,17 @@
               <option value="0" selected disabled>請選擇數量</option>
               <option :value="num" v-for="num in 10" :key="num">選購 {{num}} {{product.unit}}</option>
             </select>
+            <p>
+              小計
+              <strong>{{ product.num * product.price | currency }}</strong>
+              元
+            </p>
             <!-- 加到購物車 -->
             <button
               type="button"
               class="btn btn-maple mb-4 w-100"
               @click="addToCart(product.id, product.num)"
             >
-              小計
-              <strong>{{ product.num * product.price | currency }}</strong>元 /
               <!-- <i class="fas fa-spinner fa-spin" v-if="product.id === status.loadingItem"></i> -->
               加到購物車
             </button>
@@ -126,7 +132,7 @@ export default {
     return {
       id: "",
       product: {
-        num: 0
+        num: 0,
       },
       // status: {
       //   loadingItem: ""
@@ -160,8 +166,9 @@ export default {
     vm.isLoading = true;
     this.$http.get(url).then(response => {
       vm.product = response.data.product; // 透過這個 id 取得該筆資料的內容
+      // vm.product.num = 0; // 設置商品數量的預設值
+      vm.$set(vm.product, 'num', 0); // 動態添加響應數據
       console.log(response);
-      this.product.num = 0; // 設置商品數量的預設值
       vm.isLoading = false;
     });
   }
@@ -170,7 +177,7 @@ export default {
 
 <style scoped lang="scss">
 .loading-image {
-  background-image: url(../../assets/images/gif/KingSlime.gif);
+  background-image: url(../../assets/images/GIFs/KingSlime.gif);
   background-size: cover;
   width: 219px;
   height: 230px;
@@ -187,6 +194,9 @@ export default {
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
+      @media (max-width: 576px) {
+        height: 120px;
+      }
     }
     // right side
     .category-badge {

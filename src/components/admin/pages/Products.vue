@@ -1,6 +1,10 @@
 <template>
   <div class="py-5">
-    <loading :active.sync="isLoading"></loading>
+    <loading :active.sync="isLoading">
+      <template slot="default">
+        <div class="loading-image"></div>
+      </template>
+    </loading>
     <div class="text-sm-right">
       <!-- Button trigger modal -->
       <button class="btn btn-maple" @click="openModal(true)">建立新產品</button>
@@ -342,3 +346,12 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+.loading-image {
+  background-image: url(../../../assets/images/GIFs/KingSlime.gif);
+  background-size: cover;
+  width: 219px;
+  height: 230px;
+}
+</style>

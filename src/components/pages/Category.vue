@@ -36,7 +36,7 @@
             >
               <div class="row no-gutters">
                 <div class="col-md-4 align-self-center text-center text-md-right">
-                  <img src="../../assets/images/gif/pig.gif" height="50px" alt />
+                  <img src="../../assets/images/GIFs/pig.gif" height="50px" alt />
                 </div>
                 <div class="col-md-8 align-self-center text-center text-md-left">
                   <p>所有商品</p>
@@ -292,13 +292,13 @@ export default {
 
 <style scoped lang="scss">
 .loading-image {
-  background-image: url(../../assets/images/gif/KingSlime.gif);
+  background-image: url(../../assets/images/GIFs/KingSlime.gif);
   background-size: cover;
   width: 219px;
   height: 230px;
 }
 .banner {
-  background-image: url(../../assets/images/mobs.jpg);
+  background-image: url(../../assets/images/Banner/mobs.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
@@ -358,6 +358,9 @@ export default {
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
+      @media(max-width: 576px){
+        height: 100px;
+      }
     }
     .card-text {
       overflow: hidden;

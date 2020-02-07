@@ -67,7 +67,7 @@ export default {
 
 <style scoped lang="scss">
 section.bg-login {
-  background-image: url(../../assets/images/hana.png);
+  background-image: url(../../assets/images/Banner/hana.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

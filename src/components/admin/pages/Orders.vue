@@ -1,6 +1,10 @@
 <template>
   <div class="py-4">
-    <loading :active.sync="isLoading"></loading>
+    <loading :active.sync="isLoading">
+      <template slot="default">
+        <div class="loading-image"></div>
+      </template>
+    </loading>
     <table class="table mt-4" v-if="orders.length">
       <thead class="thead-light">
         <tr>
@@ -86,3 +90,12 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+.loading-image {
+  background-image: url(../../../assets/images/GIFs/KingSlime.gif);
+  background-size: cover;
+  width: 219px;
+  height: 230px;
+}
+</style>

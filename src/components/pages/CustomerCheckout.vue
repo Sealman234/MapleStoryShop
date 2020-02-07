@@ -129,7 +129,7 @@ export default {
 }
 
 .banner {
-  background-image: url(../../assets/images/thanks.jpg);
+  background-image: url(../../assets/images/Banner/thanks.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: left center;

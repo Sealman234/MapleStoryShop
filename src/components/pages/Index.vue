@@ -104,57 +104,57 @@
             <!-- slides -->
             <swiper-slide>
               <div class="slide">
-                <img src="../../assets/images/jobs/beginner.jpg" class="img-fluid" alt />
+                <img src="../../assets/images/Job/beginner.jpg" class="img-fluid" alt />
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="slide">
-                <img src="../../assets/images/jobs/wizard.png" class="img-fluid" alt />
+                <img src="../../assets/images/Job/wizard.png" class="img-fluid" alt />
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="slide">
-                <img src="../../assets/images/jobs/warrior.jpg" class="img-fluid" alt />
+                <img src="../../assets/images/Job/warrior.jpg" class="img-fluid" alt />
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="slide">
-                <img src="../../assets/images/jobs/thief-male.jpg" class="img-fluid" alt />
+                <img src="../../assets/images/Job/thief-male.jpg" class="img-fluid" alt />
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="slide">
-                <img src="../../assets/images/jobs/thief2.png" class="img-fluid" alt />
+                <img src="../../assets/images/Job/thief2.png" class="img-fluid" alt />
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="slide">
-                <img src="../../assets/images/jobs/sword.png" class="img-fluid" alt />
+                <img src="../../assets/images/Job/sword.png" class="img-fluid" alt />
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="slide">
-                <img src="../../assets/images/jobs/magician.jpg" class="img-fluid" alt />
+                <img src="../../assets/images/Job/magician.jpg" class="img-fluid" alt />
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="slide">
-                <img src="../../assets/images/jobs/knight.png" class="img-fluid" alt />
+                <img src="../../assets/images/Job/knight.png" class="img-fluid" alt />
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="slide">
-                <img src="../../assets/images/jobs/archer-male.jpg" class="img-fluid" alt />
+                <img src="../../assets/images/Job/archer-male.jpg" class="img-fluid" alt />
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="slide">
-                <img src="../../assets/images/jobs/archer.jpg" class="img-fluid" alt />
+                <img src="../../assets/images/Job/archer.jpg" class="img-fluid" alt />
               </div>
             </swiper-slide>
             <swiper-slide>
               <div class="slide">
-                <img src="../../assets/images/jobs/thief.jpg" class="img-fluid" alt />
+                <img src="../../assets/images/Job/thief.jpg" class="img-fluid" alt />
               </div>
             </swiper-slide>
           </swiper>
@@ -327,7 +327,7 @@ export default {
 // Loading
 .loading-image {
   // background-image: url(../../assets/images/gif/slime.gif);
-  background-image: url(../../assets/images/gif/KingSlime.gif);
+  background-image: url(../../assets/images/GIFs/KingSlime.gif);
   background-size: cover;
   // width: 76.5957446809px;
   // height: 100px;
@@ -337,7 +337,7 @@ export default {
 
 // Banner
 .banner {
-  background-image: url(../../assets/images/pocket.png);
+  background-image: url(../../assets/images/Banner/pocket.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -417,6 +417,9 @@ export default {
           background-size: contain;
           background-repeat: no-repeat;
           background-position: center;
+          @media (max-width: 576px) {
+            height: 100px;
+          }
         }
         .card-text {
           overflow: hidden;

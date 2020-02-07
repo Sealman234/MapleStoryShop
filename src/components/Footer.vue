@@ -11,13 +11,13 @@
             style="bottom: -2px; right: 0;"
           />
           <img
-            src="../assets/images/gif/mushroom.gif"
+            src="../assets/images/GIFs/mushroom.gif"
             width="70px"
             class="position-absolute d-md-none"
             style="bottom: -2px; right: 0px;"
           />
           <img
-            src="../assets/images/gif/mushroom2.gif"
+            src="../assets/images/GIFs/mushroom2.gif"
             width="70px"
             class="position-absolute d-md-none"
             style="bottom: -2px; left: 150px;"
