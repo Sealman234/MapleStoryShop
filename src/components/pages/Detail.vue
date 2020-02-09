@@ -6,7 +6,7 @@
         <div class="loading-image"></div>
       </template>
     </loading>
-
+    <!-- 商品資訊 -->
     <div class="container py-3">
       <!-- Breadcrumb -->
       <nav aria-label="breadcrumb">
@@ -127,16 +127,14 @@
 
 <script>
 import Pagination from "../Pagination";
+
 export default {
   data() {
     return {
       id: "",
       product: {
-        num: 0,
+        num: 0
       },
-      // status: {
-      //   loadingItem: ""
-      // },
       isLoading: false
     };
   },
@@ -144,7 +142,6 @@ export default {
     addToCart(id, qty = 1) {
       const vm = this;
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
-      // vm.status.loadingItem = id;
       vm.isLoading = true;
       const cart = {
         product_id: id,
@@ -152,8 +149,7 @@ export default {
       };
       this.$http.post(url, { data: cart }).then(response => {
         console.log(response);
-        // vm.getCart(); // 加入後刷新購物車
-        // vm.status.loadingItem = "";
+        vm.$bus.$emit("cartCreate:push");
         vm.isLoading = false;
       });
     }
@@ -166,8 +162,7 @@ export default {
     vm.isLoading = true;
     this.$http.get(url).then(response => {
       vm.product = response.data.product; // 透過這個 id 取得該筆資料的內容
-      // vm.product.num = 0; // 設置商品數量的預設值
-      vm.$set(vm.product, 'num', 0); // 動態添加響應數據
+      vm.$set(vm.product, "num", 0); // 動態添加響應數據，設置商品數量的預設值
       console.log(response);
       vm.isLoading = false;
     });

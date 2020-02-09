@@ -1,0 +1,216 @@
+<template>
+  <div>
+    <div class="message-alert">
+      <div class="alert alert-success alert-dismissible" role="alert" v-if="showAlert">
+        優惠碼套用成功
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Button trigger modal -->
+    <a type="button" class="btn btn-cart" data-toggle="modal" data-target="#cartModal">
+      <span class="badge-cart">{{ cart.carts.length }}</span>
+      <img src="../assets/images/GIFs/cart.gif" alt />
+    </a>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="cartModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="cartModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cartModalLabel">購物車</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row d-flex justify-content-center" v-if="cart.carts.length !== 0">
+              <div class="col-12">
+                <table class="table">
+                  <thead class="thead-light">
+                    <th></th>
+                    <th>商品名稱</th>
+                    <th>數量</th>
+                    <th>單價</th>
+                  </thead>
+                  <tbody>
+                    <tr v-for="item in cart.carts" :key="item.id">
+                      <td class="align-middle">
+                        <!-- 刪除時隱藏 trash icon -->
+                        <button
+                          type="button"
+                          class="btn btn-outline-maple btn-sm"
+                          @click="removeCartItem(item.id)"
+                          style="width:32px; height:30px; overflow:hidden"
+                        >
+                          <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
+                          <i class="far fa-trash-alt"></i>
+                        </button>
+                      </td>
+                      <td class="align-middle">
+                        {{ item.product.title }}
+                        <div class="text-success" v-if="item.coupon">已套用優惠券</div>
+                      </td>
+                      <td class="align-middle">{{ item.qty }}/{{ item.product.unit }}</td>
+                      <td
+                        class="align-middle text-right"
+                        :class="{'text-success': item.coupon}"
+                      >{{ item.final_total | currency }}</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="3" class="text-right">總金額</td>
+                      <td class="text-right">{{ cart.total | currency }}</td>
+                    </tr>
+                    <tr v-if="cart.total !== cart.final_total">
+                      <td colspan="3" class="text-right text-success">折扣價</td>
+                      <td class="text-right text-success">{{ cart.final_total | currency }}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入優惠碼"
+                    v-model="coupon_code"
+                  />
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-maple" type="button" @click="addCouponCode">套用優惠碼</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center text-moderate" v-else>
+              <p class="align-middle"><i class="fas fa-shopping-cart fa-5x"></i></p>
+              <p class="h3 align-middle mb-0">購物車還沒有任何東西哦！</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">再逛逛</button>
+            <a @click.prevent="goCheckout" class="btn btn-maple text-white">結帳去</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import $ from "jquery";
+
+export default {
+  name: "Cart",
+  data() {
+    return {
+      product: {},
+      status: {
+        loadingItem: ""
+      },
+      cart: {
+        carts: []
+      },
+      coupon_code: "",
+      showAlert: false
+    };
+  },
+  methods: {
+    // 結帳去
+    goCheckout() {
+      $("#cartModal").modal("hide");
+      const path = `/CustomerOrder`;
+      if (this.$route.path !== path) {
+        this.$router.push(path);
+      }
+    },
+    // 更新購物車
+    getCart() {
+      const vm = this;
+      const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+      vm.$http.get(url).then(response => {
+        vm.cart = response.data.data;
+        console.log(response);
+      });
+    },
+    // 刪除品項
+    removeCartItem(id) {
+      const vm = this;
+      vm.status.loadingItem = id;
+      const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
+      vm.$http.delete(url).then(response => {
+        vm.$bus.$emit("cartCreate:push");
+        vm.getCart();
+      });
+    },
+    // 套用優惠碼
+    addCouponCode() {
+      const vm = this;
+      const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/coupon`;
+      const coupon = {
+        code: vm.coupon_code
+      };
+      vm.$http.post(url, { data: coupon }).then(response => {
+        console.log(response);
+        console.log(response.data.message);
+        if (response.data.success) {
+          vm.getCart();
+          const timestamp = Math.floor(new Date() / 1000);
+          vm.showAlert = true;
+          vm.removeMessageWithTiming(timestamp);
+        }
+      });
+    },
+    // 移除提示訊息
+    removeMessageWithTiming(timestamp) {
+      const vm = this;
+      setTimeout(() => {
+        vm.showAlert = false;
+      }, 3000);
+    }
+  },
+  created() {
+    const vm = this;
+    vm.getCart();
+    vm.$bus.$on("cartCreate:push", () => {
+      vm.getCart();
+    });
+  }
+};
+</script>
+
+<style scoped lang="scss">
+.message-alert {
+  position: fixed;
+  max-width: 50%;
+  top: 56px;
+  right: 20px;
+  z-index: 1100;
+}
+.btn-cart {
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  z-index: 999;
+  .badge-cart {
+    background: #c1170c;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    color: #fff;
+    text-align: center;
+  }
+}
+</style>

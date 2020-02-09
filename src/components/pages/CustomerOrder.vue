@@ -207,7 +207,7 @@ export default {
       const vm = this;
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
       vm.isLoading = true;
-      this.$http.get(url).then(response => {
+      vm.$http.get(url).then(response => {
         vm.cart = response.data.data;
         console.log(response);
         vm.isLoading = false;
@@ -217,10 +217,10 @@ export default {
       const vm = this;
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
       vm.isLoading = true;
-      this.$http.delete(url).then(response => {
-        // console.log(response);
+      vm.$http.delete(url).then(response => {
         vm.isLoading = false;
-        this.getCart(); // 刪除後，重新取得購物車內容
+        vm.getCart(); // 刪除後，重新取得購物車內容
+        vm.$bus.$emit("cartCreate:push");
       });
     },
     addCouponCode() {
@@ -230,11 +230,12 @@ export default {
       const coupon = {
         code: vm.coupon_code // 用戶輸入的優惠碼
       };
-      this.$http.post(url, { data: coupon }).then(response => {
+      vm.$http.post(url, { data: coupon }).then(response => {
         console.log(response);
         console.log(response.data.message); // 回應是否套用成功
         vm.isLoading = false;
-        this.getCart(); // 套用後價格會調整，所以要重新取得購物車
+        vm.getCart(); // 套用後價格會調整，所以要重新取得購物車
+        vm.$bus.$emit("cartCreate:push");
       });
     },
     createOrder() {
@@ -244,10 +245,10 @@ export default {
       const order = vm.form;
       // vm.isLoading = true;
       // 表單完成前不能送出
-      this.$validator.validate().then(result => {
+      vm.$validator.validate().then(result => {
         if (result) {
           // do stuff if not valid.
-          this.$http.post(url, { data: order }).then(response => {
+          vm.$http.post(url, { data: order }).then(response => {
             console.log("訂單已建立", response);
             // 判斷式，確定訂單建立完成，即轉換頁面
             if (response.data.success) {
@@ -263,7 +264,11 @@ export default {
     }
   },
   created() {
-    this.getCart();
+    const vm = this;
+    vm.getCart();
+    vm.$bus.$on("cartCreate:push", () => {
+      vm.getCart();
+    });
   }
 };
 </script>

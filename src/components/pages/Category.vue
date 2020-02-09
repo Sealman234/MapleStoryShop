@@ -209,13 +209,13 @@ import $ from "jquery";
 import Pagination from "../Pagination";
 
 export default {
+  components: {
+    Pagination
+  },
   data() {
     return {
       products: [],
       product: {},
-      // status: {
-      //   loadingItem: ""
-      // },
       isLoading: false,
       tempCategory: "",
       pagination: {},
@@ -242,14 +242,12 @@ export default {
       vm.isLoading = true;
       this.$http.get(url).then(response => {
         vm.products = response.data.products;
-        // console.log(response);
         vm.isLoading = false;
       });
     },
     addToCart(id, qty = 1) {
       const vm = this;
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
-      // vm.status.loadingItem = id;
       vm.isLoading = true;
       const cart = {
         product_id: id,
@@ -257,8 +255,7 @@ export default {
       };
       this.$http.post(url, { data: cart }).then(response => {
         console.log(response);
-        // vm.getCart(); // 加入後刷新購物車
-        // vm.status.loadingItem = "";
+        vm.$bus.$emit("cartCreate:push");
         vm.isLoading = false;
       });
     }
@@ -278,9 +275,6 @@ export default {
         });
       }
     }
-  },
-  components: {
-    Pagination
   },
   created() {
     this.getAllProducts(); // 所有商品
@@ -358,7 +352,7 @@ export default {
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      @media(max-width: 576px){
+      @media (max-width: 576px) {
         height: 100px;
       }
     }

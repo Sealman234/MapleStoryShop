@@ -6,6 +6,8 @@
     <main>
       <router-view></router-view>
     </main>
+    <!-- 懸浮購物車 -->
+    <Cart class="d-none d-sm-block"></Cart>
     <!-- Footer -->
     <Footer></Footer>
   </div>
@@ -14,11 +16,13 @@
 <script>
 import Header from "./Header";
 import Footer from "./Footer";
+import Cart from "./Cart";
 export default {
   components: {
     Header,
-    Footer
-  }
+    Footer,
+    Cart
+  },
 };
 </script>
 
