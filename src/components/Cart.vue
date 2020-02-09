@@ -1,14 +1,5 @@
 <template>
   <div>
-    <div class="message-alert">
-      <div class="alert alert-success alert-dismissible" role="alert" v-if="showAlert">
-        優惠碼套用成功
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    </div>
-
     <!-- Button trigger modal -->
     <a type="button" class="btn btn-cart" data-toggle="modal" data-target="#cartModal">
       <span class="badge-cart">{{ cart.carts.length }}</span>
@@ -121,7 +112,7 @@ export default {
         carts: []
       },
       coupon_code: "",
-      showAlert: false
+      // showAlert: false
     };
   },
   methods: {
@@ -148,8 +139,15 @@ export default {
       vm.status.loadingItem = id;
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
       vm.$http.delete(url).then(response => {
-        vm.$bus.$emit("cartCreate:push");
-        vm.getCart();
+        if (response.data.success) {
+          vm.$bus.$emit("message:push", "產品刪除成功", "success");
+          vm.isLoading = false;
+          vm.getCart(); // 刪除後，重新取得購物車內容
+          vm.$bus.$emit("cartCreate:push");
+        } else {
+          vm.isLoading = false;
+          vm.$bus.$emit("message:push", "Oops！出現錯誤了！", "danger");
+        }
       });
     },
     // 套用優惠碼
@@ -161,22 +159,21 @@ export default {
       };
       vm.$http.post(url, { data: coupon }).then(response => {
         console.log(response);
-        console.log(response.data.message);
+        console.log(response.data.message); // 回應是否套用成功
         if (response.data.success) {
-          vm.getCart();
-          const timestamp = Math.floor(new Date() / 1000);
-          vm.showAlert = true;
-          vm.removeMessageWithTiming(timestamp);
+          vm.isLoading = false;
+          vm.$bus.$emit("message:push", "優惠碼套用成功", "success");
+          vm.getCart(); // 套用後價格會調整，所以要重新取得購物車
+          vm.$bus.$emit("cartCreate:push");
+        } else if (response.data.message === "找不到優惠券!") {
+          vm.isLoading = false;
+          this.$bus.$emit("message:push", "沒有這張優惠卷", "danger");
+        } else if (response.data.message === "優惠券無法無法使用或已過期") {
+          vm.isLoading = false;
+          vm.$bus.$emit("message:push", "優惠券無法無法使用或已過期", "danger");
         }
       });
     },
-    // 移除提示訊息
-    removeMessageWithTiming(timestamp) {
-      const vm = this;
-      setTimeout(() => {
-        vm.showAlert = false;
-      }, 3000);
-    }
   },
   created() {
     const vm = this;

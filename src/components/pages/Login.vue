@@ -2,35 +2,33 @@
   <div>
     <section class="bg-login">
       <Header></Header>
-      <div class="">
-        <form class="form-signin" @submit.prevent="signin">
-          <div class="ms-logo mb-2">
-            <h1 class="m-0 navbar-brand mx-auto" href="#">MapleStory</h1>
-          </div>
-          <label for="inputEmail">帳號</label>
-          <input
-            type="email"
-            id="inputEmail"
-            class="form-control mb-2"
-            placeholder="Email address"
-            required
-            autofocus
-            v-model="user.username"
-          />
-          <label for="inputPassword">密碼</label>
-          <input
-            type="password"
-            id="inputPassword"
-            class="form-control mb-2"
-            placeholder="Password"
-            required
-            v-model="user.password"
-          />
-          <div class="d-flex justify-content-end">
-            <button class="btn btn-lg btn-maple" type="submit">登入</button>
-          </div>
-        </form>
-      </div>
+      <form class="form-signin" @submit.prevent="signin">
+        <div class="ms-logo mb-2">
+          <h1 class="m-0 navbar-brand mx-auto" href="#">MapleStory</h1>
+        </div>
+        <label for="inputEmail">帳號</label>
+        <input
+          type="email"
+          id="inputEmail"
+          class="form-control mb-2"
+          placeholder="Email address"
+          required
+          autofocus
+          v-model="user.username"
+        />
+        <label for="inputPassword">密碼</label>
+        <input
+          type="password"
+          id="inputPassword"
+          class="form-control mb-2"
+          placeholder="Password"
+          required
+          v-model="user.password"
+        />
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-lg btn-maple" type="submit">登入</button>
+        </div>
+      </form>
     </section>
   </div>
 </template>

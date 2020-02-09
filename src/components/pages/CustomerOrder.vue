@@ -218,9 +218,15 @@ export default {
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
       vm.isLoading = true;
       vm.$http.delete(url).then(response => {
-        vm.isLoading = false;
-        vm.getCart(); // 刪除後，重新取得購物車內容
-        vm.$bus.$emit("cartCreate:push");
+        if (response.data.success) {
+          vm.$bus.$emit("message:push", "產品刪除成功", "success");
+          vm.isLoading = false;
+          vm.getCart(); // 刪除後，重新取得購物車內容
+          vm.$bus.$emit("cartCreate:push");
+        } else {
+          vm.isLoading = false;
+          vm.$bus.$emit("message:push", "Oops！出現錯誤了！", "danger");
+        }
       });
     },
     addCouponCode() {
@@ -233,9 +239,18 @@ export default {
       vm.$http.post(url, { data: coupon }).then(response => {
         console.log(response);
         console.log(response.data.message); // 回應是否套用成功
-        vm.isLoading = false;
-        vm.getCart(); // 套用後價格會調整，所以要重新取得購物車
-        vm.$bus.$emit("cartCreate:push");
+        if (response.data.success) {
+          vm.isLoading = false;
+          vm.$bus.$emit("message:push", "優惠碼套用成功", "success");
+          vm.getCart(); // 套用後價格會調整，所以要重新取得購物車
+          vm.$bus.$emit("cartCreate:push");
+        } else if (response.data.message === "找不到優惠券!") {
+          vm.isLoading = false;
+          this.$bus.$emit("message:push", "沒有這張優惠卷", "danger");
+        } else if (response.data.message === "優惠券無法無法使用或已過期") {
+          vm.isLoading = false;
+          vm.$bus.$emit("message:push", "優惠券無法無法使用或已過期", "danger");
+        }
       });
     },
     createOrder() {

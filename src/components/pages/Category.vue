@@ -253,10 +253,19 @@ export default {
         product_id: id,
         qty
       };
-      this.$http.post(url, { data: cart }).then(response => {
+      vm.$http.post(url, { data: cart }).then(response => {
         console.log(response);
-        vm.$bus.$emit("cartCreate:push");
-        vm.isLoading = false;
+        if (response.data.message === "已加入購物車") {
+          vm.$bus.$emit("message:push", "產品加入購物車成功", "success");
+          vm.$bus.$emit("cartCreate:push");
+          vm.isLoading = false;
+        } else if (response.data.message === "加入購物車有誤") {
+          vm.isLoading = false;
+          vm.$bus.$emit("message:push", "Oops！出現錯誤了！", "danger");
+        } else {
+          vm.isLoading = false;
+          vm.$bus.$emit("message:push", "Oops！出現錯誤了！", "danger");
+        }
       });
     }
   },

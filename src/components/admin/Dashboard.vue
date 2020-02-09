@@ -14,7 +14,7 @@
 
 <script>
 import Navbar from "./Navbar";
-import Alert from "./AlertMessage";
+import Alert from "../shared/AlertMessage";
 
 export default {
   components: {
