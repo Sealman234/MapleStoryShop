@@ -1,6 +1,6 @@
-# MapleStoryShop (楓之谷電商)
+# MapleStoryShop (楓之谷商城)
 
-> 歡迎來到楓之谷電商，這是一份 Vue.js 電商網站的前端練習作品 (Vue CLI 2)
+> 歡迎來到楓之谷商城，這是一份 Vue.js 電商網站的前端練習作品 (Vue CLI 2)
 
 ## :pencil: Change Log | 更新日誌
 
