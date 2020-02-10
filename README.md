@@ -82,7 +82,7 @@
 ![後台](https://i.imgur.com/9mn0vfj.png)
 
 其餘更多細節部分，歡迎至 Demo 網站觀看。
-<https://sealman234.github.io/>
+<https://sealman234.github.io/MapleStoryShop/>
 
 ## :art: Sources | 圖片來源
 
@@ -99,7 +99,7 @@
 
 - 網站名稱：MapleStoryShop
 - 網站描述：楓之谷電子商務網站
-- 網站網址：<https://sealman234.github.io/>
+- 網站網址：<https://sealman234.github.io/MapleStoryShop/>
 - 網站狀態：Vue CLI 2 版製作完成，Vue CLI 3 + Vuex 版正在更新中 ...
 
 ## :hamburger: About Author | 關於作者
