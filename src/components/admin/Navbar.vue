@@ -28,7 +28,10 @@
                   class="nav-link p-3"
                   data-toggle="collapse"
                   data-target=".navbar-collapse.show"
-                >產品列表</router-link>
+                >
+                  <i class="fas fa-box-open"></i>
+                  產品列表
+                </router-link>
               </li>
               <li class="nav-item">
                 <span></span>
@@ -37,7 +40,10 @@
                   class="nav-link p-3"
                   data-toggle="collapse"
                   data-target=".navbar-collapse.show"
-                >訂單列表</router-link>
+                >
+                  <i class="fas fa-cart-arrow-down"></i>
+                  訂單列表
+                </router-link>
               </li>
               <li class="nav-item">
                 <span></span>
@@ -46,7 +52,10 @@
                   class="nav-link p-3"
                   data-toggle="collapse"
                   data-target=".navbar-collapse.show"
-                >優惠券列表</router-link>
+                >
+                  <i class="fas fa-money-check-alt"></i>
+                  優惠券列表
+                </router-link>
               </li>
               <li class="nav-item">
                 <span></span>

@@ -112,7 +112,6 @@ export default {
         carts: []
       },
       coupon_code: "",
-      // showAlert: false
     };
   },
   methods: {
