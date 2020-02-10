@@ -16,7 +16,7 @@
 10. [2020/02/05]：完成登入頁面
 11. [2020/02/07]：新增打字動畫、首頁新增顧客評價區塊
 12. [2020/02/09]：新增懸浮購物車元件與 AlertMessage 功能
-13. [2020/02/10]：為 GitHub 的 Repository 新增 README
+13. [2020/02/10]：為 GitHub 的 Repository 新增 README、部署 GitHub Pages
 
 ## :pencil2: Skills | 使用技術
 
@@ -80,6 +80,9 @@
 ### 後台
 
 ![後台](https://i.imgur.com/9mn0vfj.png)
+
+其餘更多細節部分，歡迎至 Demo 網站觀看。
+<https://sealman234.github.io/>
 
 ## :art: Sources | 圖片來源
 
