@@ -96,7 +96,7 @@ export default {
       vm.isLoading = true;
       this.$http.get(url).then(response => {
         vm.order = response.data.order;
-        console.log(response);
+        // console.log(response);
         vm.isLoading = false;
       });
     },
@@ -106,7 +106,7 @@ export default {
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/pay/${vm.orderId}`;
       vm.isLoading = true;
       this.$http.post(url).then(response => {
-        console.log(response);
+        // console.log(response);
         if (response.data.success) {
           this.getOrder(); // 重新取得一次訂單資料，把"尚未付款"轉換成"付款完成"，並且拿掉付款按鈕
         }
@@ -119,14 +119,14 @@ export default {
       vm.isLoading = true;
       this.$http.get(url).then(response => {
         vm.cart = response.data.data;
-        console.log(response);
+        // console.log(response);
         vm.isLoading = false;
       });
     }
   },
   created() {
     this.orderId = this.$route.params.orderId; // 可讀取到 path: 'customerCheckout/:orderId' 用冒號帶入的參數 (orderId)
-    console.log(this.orderId);
+    // console.log(this.orderId);
     this.getOrder(); // 有 orderId 就能把資料內容取回來呈現了
     this.getCart();
   }

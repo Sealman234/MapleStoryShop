@@ -231,7 +231,7 @@ export default {
       this.$http.get(url).then(response => {
         vm.allProducts = response.data.products;
         vm.pagination = response.data.pagination;
-        console.log(response);
+        // console.log(response);
         vm.isLoading = false;
       });
     },
@@ -254,7 +254,7 @@ export default {
         qty
       };
       vm.$http.post(url, { data: cart }).then(response => {
-        console.log(response);
+        // console.log(response);
         if (response.data.message === "已加入購物車") {
           vm.$bus.$emit("message:push", "產品加入購物車成功", "success");
           vm.$bus.$emit("cartCreate:push");
@@ -288,7 +288,7 @@ export default {
   created() {
     this.getAllProducts(); // 所有商品
     this.getProducts(); // 其他類別
-    console.log(this.$route.params.id);
+    // console.log(this.$route.params.id);
   }
 };
 </script>

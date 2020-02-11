@@ -187,7 +187,7 @@ export default {
         vm.isLoading = false;
         vm.coupons = response.data.coupons;
         vm.pagination = response.data.pagination;
-        console.log(response.data);
+        // console.log(response.data);
       });
     },
     openModal(isNew, item) {
@@ -221,16 +221,16 @@ export default {
         // vm.due_date = new Date(vm.tempCoupon.due_date * 1000); // 好像可有可無
       }
       // 共同程式碼
-      console.log(process.env.APIPATH, process.env.CUSTOMPATH);
+      // console.log(process.env.APIPATH, process.env.CUSTOMPATH);
       this.$http[httpMethod](api, { data: vm.tempCoupon }).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.success) {
           $("#couponModal").modal("hide");
           vm.getCoupons();
         } else {
           $("#couponModal").modal("hide");
           vm.getCoupons();
-          console.log("新增失敗");
+          // console.log("新增失敗");
         }
       });
     },
@@ -241,16 +241,16 @@ export default {
     deleteCoupon() {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
-      console.log(process.env.APIPATH, process.env.CUSTOMPATH);
+      // console.log(process.env.APIPATH, process.env.CUSTOMPATH);
       this.$http.delete(api).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.success) {
           $("#delCouponModal").modal("hide");
           vm.getCoupons();
         } else {
           $("#delCouponModal").modal("hide");
           vm.getCoupons();
-          console.log("刪除失敗");
+          // console.log("刪除失敗");
         }
       });
     }

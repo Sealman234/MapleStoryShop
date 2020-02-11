@@ -320,7 +320,7 @@ export default {
         qty
       };
       vm.$http.post(url, { data: cart }).then(response => {
-        console.log(response);
+        // console.log(response);
         if (response.data.message === "已加入購物車") {
           vm.$bus.$emit("message:push", "產品加入購物車成功", "success");
           vm.$bus.$emit("cartCreate:push");

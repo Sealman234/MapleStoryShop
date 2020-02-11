@@ -249,10 +249,10 @@ export default {
     getProducts(page = 1) {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/products?page=${page}`;
-      console.log(process.env.APIPATH, process.env.CUSTOMPATH);
+      // console.log(process.env.APIPATH, process.env.CUSTOMPATH);
       vm.isLoading = true;
       this.$http.get(api).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.isLoading = false;
         vm.products = response.data.products;
         vm.pagination = response.data.pagination;
@@ -278,16 +278,16 @@ export default {
         httpMethod = "put";
       }
 
-      console.log(process.env.APIPATH, process.env.CUSTOMPATH);
+      // console.log(process.env.APIPATH, process.env.CUSTOMPATH);
       this.$http[httpMethod](api, { data: vm.tempProduct }).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.success) {
           $("#productModal").modal("hide");
           vm.getProducts();
         } else {
           $("#productModal").modal("hide");
           vm.getProducts();
-          console.log("新增失敗");
+          // console.log("新增失敗");
         }
       });
     },
@@ -298,21 +298,21 @@ export default {
     deleteProduct() {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
-      console.log(process.env.APIPATH, process.env.CUSTOMPATH);
+      // console.log(process.env.APIPATH, process.env.CUSTOMPATH);
       this.$http.delete(api).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.success) {
           $("#delProductModal").modal("hide");
           vm.getProducts();
         } else {
           $("#delProductModal").modal("hide");
           vm.getProducts();
-          console.log("刪除失敗");
+          // console.log("刪除失敗");
         }
       });
     },
     uploadFile() {
-      console.log(this);
+      // console.log(this);
       const uploadFile = this.$refs.files.files[0];
       const formData = new FormData();
       formData.append("file-to-upload", uploadFile);
@@ -326,7 +326,7 @@ export default {
           }
         })
         .then(response => {
-          console.log(response.data);
+          // console.log(response.data);
           vm.status.fileUploading = false;
           if (response.data.success) {
             vm.$set(vm.tempProduct, "imageUrl", response.data.imageUrl);

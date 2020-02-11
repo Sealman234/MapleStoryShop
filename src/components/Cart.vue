@@ -129,7 +129,7 @@ export default {
       const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
       vm.$http.get(url).then(response => {
         vm.cart = response.data.data;
-        console.log(response);
+        // console.log(response);
       });
     },
     // 刪除品項
@@ -157,8 +157,8 @@ export default {
         code: vm.coupon_code
       };
       vm.$http.post(url, { data: coupon }).then(response => {
-        console.log(response);
-        console.log(response.data.message); // 回應是否套用成功
+        // console.log(response);
+        // console.log(response.data.message); // 回應是否套用成功
         if (response.data.success) {
           vm.isLoading = false;
           vm.$bus.$emit("message:push", "優惠碼套用成功", "success");

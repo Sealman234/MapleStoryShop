@@ -148,7 +148,7 @@ export default {
         qty
       };
       vm.$http.post(url, { data: cart }).then(response => {
-        console.log(response);
+        // console.log(response);
         if (response.data.message === "已加入購物車") {
           vm.$bus.$emit("message:push", "產品加入購物車成功", "success");
           vm.$bus.$emit("cartCreate:push");
@@ -172,7 +172,7 @@ export default {
     this.$http.get(url).then(response => {
       vm.product = response.data.product; // 透過這個 id 取得該筆資料的內容
       vm.$set(vm.product, "num", 0); // 動態添加響應數據，設置商品數量的預設值
-      console.log(response);
+      // console.log(response);
       vm.isLoading = false;
     });
   }

@@ -209,7 +209,7 @@ export default {
       vm.isLoading = true;
       vm.$http.get(url).then(response => {
         vm.cart = response.data.data;
-        console.log(response);
+        // console.log(response);
         vm.isLoading = false;
       });
     },
@@ -237,8 +237,8 @@ export default {
         code: vm.coupon_code // 用戶輸入的優惠碼
       };
       vm.$http.post(url, { data: coupon }).then(response => {
-        console.log(response);
-        console.log(response.data.message); // 回應是否套用成功
+        // console.log(response);
+        // console.log(response.data.message); // 回應是否套用成功
         if (response.data.success) {
           vm.isLoading = false;
           vm.$bus.$emit("message:push", "優惠碼套用成功", "success");
@@ -264,7 +264,7 @@ export default {
         if (result) {
           // do stuff if not valid.
           vm.$http.post(url, { data: order }).then(response => {
-            console.log("訂單已建立", response);
+            // console.log("訂單已建立", response);
             // 判斷式，確定訂單建立完成，即轉換頁面
             if (response.data.success) {
               vm.$router.push(`/customerCheckout/${response.data.orderId}`); // 有變數，要使用反引號
@@ -273,7 +273,7 @@ export default {
             vm.isLoading = false;
           });
         } else {
-          console.log("欄位不完整");
+          // console.log("欄位不完整");
         }
       });
     }

@@ -19,7 +19,7 @@ export default {
       const vm = this;
       // 不需要傳入任何參數，只要觸發這個 API 就會直接登出
       this.$http.post(api).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         // 如果成功登出，就回到 Login 頁面
         if (response.data.success) {
           vm.$router.push("/login");

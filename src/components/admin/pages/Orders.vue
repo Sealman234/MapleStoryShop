@@ -61,13 +61,13 @@ export default {
     getOrders(currentPage = 1) {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/orders?page=${currentPage}`;
-      console.log(process.env.APIPATH, process.env.CUSTOMPATH);
+      // console.log(process.env.APIPATH, process.env.CUSTOMPATH);
       vm.isLoading = true;
       this.$http.get(api).then(response => {
         vm.isLoading = false;
         vm.orders = response.data.orders;
         vm.pagination = response.data.pagination;
-        console.log(response.data);
+        // console.log(response.data);
       });
     }
   },
