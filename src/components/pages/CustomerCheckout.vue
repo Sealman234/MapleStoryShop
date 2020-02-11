@@ -109,6 +109,7 @@ export default {
         // console.log(response);
         if (response.data.success) {
           this.getOrder(); // 重新取得一次訂單資料，把"尚未付款"轉換成"付款完成"，並且拿掉付款按鈕
+          vm.$bus.$emit("cartCreate:push");
         }
         vm.isLoading = false;
       });
