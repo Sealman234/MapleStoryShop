@@ -52,13 +52,13 @@ new Vue({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log('to', to);
-  console.log('from', from);
-  console.log('next', next);
+  // console.log('to', to);
+  // console.log('from', from);
+  // console.log('next', next);
   if (to.meta.requiresAuth) {
     const api = `${process.env.APIPATH}/api/user/check`;
     axios.post(api).then(response => {
-      console.log(response.data);
+      // console.log(response.data);
       if (response.data.success) {
         next();
       } else {
